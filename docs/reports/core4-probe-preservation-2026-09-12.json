@@ -1,0 +1,107 @@
+{
+  "run_id": "20260912T063021795259Z_99d695f0",
+  "preserved_prior_files": 29,
+  "prior_file_count": 30,
+  "changed_prior_files": [
+    "docs/STATUS.md"
+  ],
+  "prior_files": {
+    "data/커피가격데이터통합.csv": "c6b167cbb1c0f358912582504fba03019b92a50e34dc2036ec6951208da0c51a",
+    "data/coffee_oil_exchange_daily.csv": "86b1c9a181ce898c99326db28376f28110490e611b45de27ec90dfdf96eaf518",
+    "data/weather.csv": "4fba60d2ef044d64b31dbf4f63c7c4e149e9d39cdb56914f295c15a4af082e70",
+    "data/기후평균커피가격통합데이터.csv": "afb6c81175bdf86eea162505de941a58d47c53a272a84668ee31d786272fa3b1",
+    "data/기후데이터피쳐선택.csv": "8835e5d58fd1cae78e94bc6b7be493d069bf063628a1c390ad95ad53d3bd0068",
+    "data/비수확기평균커피가격통합데이터.csv": "c53975d86a60f61b9117276b2ec5590e13acd6b4ae2734334b244eccae934af7",
+    "data/Coffee_Price_Weather.csv": "c732a839ed067c7e65f3bc6397bcb3e06b92d93a46b99d9de4742d657c9b092c",
+    "data/거시경제및커피가격통합데이터.csv": "3cde55ad2eb376fbce12529708d5b9628ea3ea0345c0aa9dcc4a470e6b185f89",
+    "data_code/old_code/data_code/기후데이터_수확기_평균값_매핑.ipynb": "917dfc681128ae12216165aa08ddc9da4f1e3f4b33aeff73d5b7d1c6b4ca871b",
+    "data_code/old_code/data_code/기후데이터_FeatureSelection.ipynb": "8dec537c321270686e59b406c422427bb2f341a2cfa4daacbadca533d77849d1",
+    "data_code/old_code/model_code/MultiStepLSTM_거시경제_기후사용.ipynb": "a118c46a1f589c682b1499dd2f63481b97abc3f7d64b436d5116990512a3ee9e",
+    "data_code/old_code/model_code/Attention_LSTM_모델학습_예측결과활용.ipynb": "e4c37ce2395afe0bbee93507d05eefb94562cd445de345ad5bca7430db07dc60",
+    "model_code/README.md": "8b022a6bea01a7f53fd5cede8f6867359eedd8b73471a033877fa6a9dc9e81ba",
+    "docs/core4-collection-readiness.md": "6f686eb353de7978c30662470d56098e2e4e1592a7e5d7177dee209d09cf169a",
+    "docs/STATUS.md": "2a7ec09c32caea48846148813451cf7075ec201028c3b944a5f5db0bd260167c",
+    "docs/baseline-audit.md": "2ebe4639b82e44a319b52999ed93c88afc6e108f74476be1016bd8a16c1d9783",
+    "docs/adr/ADR-002-notebook-first-small-batch.md": "dbd417b432b8b57fbc3579176af99845360f2f948e922ab19525d57a05709fc6",
+    "docs/adr/ADR-001-local-development-environment.md": "b65530bb0d32e6fcc89cca4626a7b71a2171322f8bef0ef4377ebff3fe6a0c73",
+    "docs/old_docs/LSTM - Attention 추가 간의 비교.pdf": "58795c66cbfffc5e12048a2e2c79aa9b44596e65a1224eab4da9abf446434dc2",
+    "docs/old_docs/ARIMA,VAR,LSTM 베이스라인 모델.pdf": "3e30d8a2894ad8e6b4363205228a4b6f94c90ab3344ff5bfc42d2793c0c693fa",
+    "docs/old_docs/README.md": "e05386835ad2d2b9744da29fded4e1fdcc88359a97532c2f9098102691a82c5b",
+    "docs/old_docs/거시경제데이터에 기후데이터 추가_초기버전.pdf": "e20374abb35e4899b4e8fa2be11c38bf9d82eee4b0516c92fc1a621e9d83eaff",
+    "docs/reports/baseline-inventory.json": "1a5bd22be8257746e02faf401de5e72f2b4f6b87291cc2cca23340d862168b53",
+    "docs/reports/local-environment-validation.md": "e93ef6284d7fd9c4103aae0e457cbcfb9950d2d251bcf5d00141e32198b5a499",
+    "docs/reports/legacy-notebook-move.json": "e39b177b57f90e695ab3f3f585f53a121849e287a45e4885fc733d098bf5f305",
+    "docs/reports/local-environment-packages.json": "a1fb8ee30b258f332151b6de2a358b8263c327499919a3a2f75f8001960cff7b",
+    "tests/test_core4_environment.py": "551b75dad60a445ef7d994c8eb3963bba2425db68b3cacb2d1d322404c6d5652",
+    "tools/audit_baseline.py": "52a53173b8b5f268116e839776f1541d3eb692a56f0c7fe92af6d19777654526",
+    "AGENTS.md": "bb886fe6917c3588f18f80e241bda64818f0caeb0218b32c568a2982e327d8f9",
+    "Context.md": "b9abd3d64cf484e84b11e5f1277d5117c3efce5afdcb3f63dd3660647641e170"
+  },
+  "legacy_notebooks": [
+    {
+      "original_head_path": "data_code/기후데이터_FeatureSelection.ipynb",
+      "current_path": "data_code/old_code/data_code/기후데이터_FeatureSelection.ipynb",
+      "sha256": "8dec537c321270686e59b406c422427bb2f341a2cfa4daacbadca533d77849d1"
+    },
+    {
+      "original_head_path": "data_code/기후데이터_수확기_평균값_매핑.ipynb",
+      "current_path": "data_code/old_code/data_code/기후데이터_수확기_평균값_매핑.ipynb",
+      "sha256": "917dfc681128ae12216165aa08ddc9da4f1e3f4b33aeff73d5b7d1c6b4ca871b"
+    },
+    {
+      "original_head_path": "model_code/Attention_LSTM_모델학습_예측결과활용.ipynb",
+      "current_path": "data_code/old_code/model_code/Attention_LSTM_모델학습_예측결과활용.ipynb",
+      "sha256": "e4c37ce2395afe0bbee93507d05eefb94562cd445de345ad5bca7430db07dc60"
+    },
+    {
+      "original_head_path": "model_code/MultiStepLSTM_거시경제_기후사용.ipynb",
+      "current_path": "data_code/old_code/model_code/MultiStepLSTM_거시경제_기후사용.ipynb",
+      "sha256": "a118c46a1f589c682b1499dd2f63481b97abc3f7d64b436d5116990512a3ee9e"
+    }
+  ],
+  "existing_requirements_sha256": "8e63a1db38459649e65b3cd8c63c6b25c1267351a1be1f950e4e01b6559d752b",
+  "manifest_artifacts_checked": 65,
+  "hash_mismatches": 0,
+  "raw_to_validation_value_reconciliation": "passed",
+  "notebook_cells": 28,
+  "executed_code_cells": 22,
+  "notebook_code_sha256": "1c663856397584724f6a534e173a856cbaf71b12a14c815a2470d633ef6cccbf",
+  "executed_notebook_matches_current_file": true,
+  "geometry_checks": [
+    {
+      "region_id": "br_sul_minas",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    },
+    {
+      "region_id": "br_cerrado",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    },
+    {
+      "region_id": "br_alta_mogiana",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    },
+    {
+      "region_id": "co_huila",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    },
+    {
+      "region_id": "co_caldas",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    },
+    {
+      "region_id": "co_antioquia",
+      "matches_request_rounded_3_decimals": true,
+      "native_grid_center_verified": false
+    }
+  ],
+  "secrets_scanned_file_count": 71,
+  "secret_matches": 0,
+  "git_diff_check": "passed",
+  "new_text_trailing_whitespace": "passed",
+  "caveat": "STATUS is the only modified prior file. All 30 prior files matched before STATUS update; 29 remain identical."
+}

@@ -1,0 +1,500 @@
+{
+  "run_id": "20260912T063021795259Z_99d695f0",
+  "completed_at": "2026-09-12T06:31:43.823507+00:00",
+  "environment": {
+    "python_version": "3.14.7",
+    "python_executable": "/Users/sj/MyDrive/MyWorkspace/Projects/Coffee_Price_Prediction/.venv/bin/python",
+    "implementation": "cpython",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "in_venv": true,
+    "notebook_code_sha256": "1c663856397584724f6a534e173a856cbaf71b12a14c815a2470d633ef6cccbf",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.5",
+      "requests": "2.34.2",
+      "yfinance": "1.7.0",
+      "python-dotenv": "1.2.3",
+      "ipykernel": "7.3.0",
+      "nbformat": "5.11.1",
+      "nbclient": "0.11.0"
+    }
+  },
+  "period": {
+    "start": "2023-12-31",
+    "end": "2025-12-31",
+    "inclusive": "both"
+  },
+  "request_count": 17,
+  "dataset_count": 12,
+  "expected_dataset_count": 12,
+  "raw_artifact_definition": "requests response entity bytes; yfinance is a library return, never HTTP raw",
+  "cftc_download_scope": "full all-market yearly archives 2023/2024/2025; validation filters approved interval and 083731",
+  "region_policy": "ADR-003 Probe only; unweighted; no station/grid representativeness claim",
+  "source_failures_isolated": true,
+  "mock_fallback": false,
+  "value_imputation": false,
+  "historical_vintage_reconstructed": false,
+  "artifacts": [
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/run-start.json",
+      "kind": "system_metadata",
+      "bytes": 2545,
+      "sha256": "8a89d1ff00f0d055f5a9884d8300c0e0d3de364718ae16066d8bff6fa3d69fa8",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/KC_F.csv",
+      "kind": "library_return",
+      "bytes": 54279,
+      "sha256": "c19198e57af255df4f5fe1c86fa64d1df3d991bec42710c2305507b1610c29f4",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/KC_F.pkl",
+      "kind": "library_return",
+      "bytes": 29725,
+      "sha256": "5039199eeda6b6af35b5940658d5dc480b96f8e80dfbdbc8335688b0440c059c",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/KC_F_metadata.json",
+      "kind": "library_return_metadata",
+      "bytes": 4383,
+      "sha256": "276028e21ae299c32fae47dc5c1294083f94bc2a308c63e690ab57108442ac86",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/market_KC_F.csv",
+      "kind": "validation_table",
+      "bytes": 66987,
+      "sha256": "bc9854e327fe33e6ffabdaa1a489d93da4f806ef60c2a87dc7609c08ca4bbd90",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/01_Yahoo_KC_F.json",
+      "kind": "system_metadata",
+      "bytes": 1373,
+      "sha256": "44333679a88ae6074c1941b4d34916246e4c3cfa34327157f5f23258c2f4c359",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/BRL_X.csv",
+      "kind": "library_return",
+      "bytes": 61436,
+      "sha256": "9de0355a5958c0c43f02126c84f318b8f7cd90c267affae368fa50b4375e21d0",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/BRL_X.pkl",
+      "kind": "library_return",
+      "bytes": 30674,
+      "sha256": "e4d9e675d5e19df51b2391647fbc8de3766e095aaabef5f7514518c0623950c6",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/BRL_X_metadata.json",
+      "kind": "library_return_metadata",
+      "bytes": 4223,
+      "sha256": "b62d9a3979ae17bb222b64d60ddd48944e25f5f792fb387b31147933d00ee503",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/market_BRL_X.csv",
+      "kind": "validation_table",
+      "bytes": 75092,
+      "sha256": "267f3bd5f7328bbd86e2390e50a5904a012db6fff4a470531a075f7bd747d4d9",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/02_Yahoo_BRL_X.json",
+      "kind": "system_metadata",
+      "bytes": 1230,
+      "sha256": "2a18bb93eb7c2e7c612772b489235e5e0bc38581d3ce077c6fe5d7c24a2607b8",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DFF_observations_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 69808,
+      "sha256": "78c156b90bc258f8dd87ae442a21bccdf4975463d533e28849e1505a7a791198",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DFF_series_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 4435,
+      "sha256": "b2fcc6659063c17580298c62716272e8282def78e3becf3c3d05a178ce90eb48",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/fred_DFF_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 4391,
+      "sha256": "26463dbe41a86688f43db140025a7a92ee3efdd25e3359f959c773882b2a3640",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/macro_DFF.csv",
+      "kind": "validation_table",
+      "bytes": 101205,
+      "sha256": "7fc58f2b68b7e12ba335a4daa73526dcaee39e3cde0e2a97b96d77e33adc743e",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/03_FRED_DFF.json",
+      "kind": "system_metadata",
+      "bytes": 1165,
+      "sha256": "4951323a9a095bcce9c9461243558a004e5b5d7bfa2e3c9521e538d0afdefdd3",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DTWEXBGS_observations_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 51836,
+      "sha256": "cba6f8b086a17c27cfd5b8387056bf709366f36bb42b0853c0154c744a5e39fe",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DTWEXBGS_series_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 724,
+      "sha256": "4776b4c53fcf19314908cc22842bb21d20022044827c58094036512dbd667fae",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/fred_DTWEXBGS_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 700,
+      "sha256": "244f07cb5eafb898113030a6794f6e104c2b1f07c770e1d8726b0e2a655db3d7",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/macro_DTWEXBGS.csv",
+      "kind": "validation_table",
+      "bytes": 77885,
+      "sha256": "c5884e7cac1e91b6ae70fac817bbb43459f93c2e68cc8ba2c7261ddcf93a3b37",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/04_FRED_DTWEXBGS.json",
+      "kind": "system_metadata",
+      "bytes": 1146,
+      "sha256": "4947266f7666acacadb36702ca4c9eb35a484d9b7db0d519f51dcb4ee46e921d",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DCOILWTICO_observations_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 50342,
+      "sha256": "425dcb765108e17ec32278abd76756f81c5ea78d451d93f548ec963f98bffd99",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/fred/DCOILWTICO_series_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 654,
+      "sha256": "d47f04a4d6849e460f8f8b8da2d553b73b283c6f7eb37736d8686df61936f9f4",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/fred_DCOILWTICO_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 637,
+      "sha256": "146bca667d9858da4a467a00f7ba0e7caf511a629672f37b860affff56577f34",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/macro_DCOILWTICO.csv",
+      "kind": "validation_table",
+      "bytes": 77434,
+      "sha256": "9606b6ab2aa4d16ca6893b49be189206a5aa68e9ded9db4ab852ee8847a3ec76",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/05_FRED_DCOILWTICO.json",
+      "kind": "system_metadata",
+      "bytes": 1152,
+      "sha256": "5768ce84f763af0e4ce8f674c9d6ffadbc47e7f23bdfc8e458d281d4ad74870a",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/br_sul_minas_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 61824,
+      "sha256": "c550d6ffc4d052c7b4a1906d4fc8268026afd3774893b6a5bd5afc566a5a5ffd",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_br_sul_minas_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1236,
+      "sha256": "a50d9cb01459619bbc67f34da575fc55fdbfb65a6bd10bf94a8c9b3c31f33a51",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_br_sul_minas.csv",
+      "kind": "validation_table",
+      "bytes": 83179,
+      "sha256": "c55ca50c374d6bc5aac12756e348cb3129238f5d29d1e8030657f1e00cfb63c3",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/06_NASA_br_sul_minas.json",
+      "kind": "system_metadata",
+      "bytes": 1765,
+      "sha256": "61f815b1cd5735af5ec6bc2b728ada936408a8592476bd01f0bfdd0c1acb223d",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/br_cerrado_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 61702,
+      "sha256": "252087a5b249d67fb3834b5f3363fb7551b790f9fe5eb0f65fc7678fecf6ab89",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_br_cerrado_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1216,
+      "sha256": "24518cc8fd2fcbbbb75cf0347de126b07b2459c5529a7a2bdeb56350dc0a15a0",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_br_cerrado.csv",
+      "kind": "validation_table",
+      "bytes": 84519,
+      "sha256": "305b9780fd24ed0df5e0d5e845835d8997d4ef7d19dce448bc20d18171229f92",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/07_NASA_br_cerrado.json",
+      "kind": "system_metadata",
+      "bytes": 1733,
+      "sha256": "23ec23c154124f8bd83c06c3d9beb343e99716a65c8b54c4733cb09d7d58da51",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/br_alta_mogiana_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 61774,
+      "sha256": "1547ad1f34bf45e258d55c8282088983f7354859a41ee790f2641eb9751d0888",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_br_alta_mogiana_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1238,
+      "sha256": "7eb371d86da2466007603854ac5d764d2141f09dfd7d50262849dd6fe43d6b9a",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_br_alta_mogiana.csv",
+      "kind": "validation_table",
+      "bytes": 88252,
+      "sha256": "28528714b3705f75f032e094590015950b52aa83ffd181e431af7fc8d0b874b5",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/08_NASA_br_alta_mogiana.json",
+      "kind": "system_metadata",
+      "bytes": 1774,
+      "sha256": "daaa26bcbc3a0ac8ddace36d79ea31e4a6d840e5fc97f482fbf6a4e3bb1947d3",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/co_huila_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 62003,
+      "sha256": "7d03d77031f88da9aed582e1c443005fd9c7e6160288cb8771475aaa032a889d",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_co_huila_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1216,
+      "sha256": "fe0a1e322a808d9b2522f7f39460aa4d53a682aa3d941c56ccaa5533344bc740",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_co_huila.csv",
+      "kind": "validation_table",
+      "bytes": 81893,
+      "sha256": "bc433749f256e2d1b68596961700a729a2774927f21266a83a168cdf338318b5",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/09_NASA_co_huila.json",
+      "kind": "system_metadata",
+      "bytes": 1727,
+      "sha256": "b09c4c07f6fc990f48e80091704199257bf57d3251cfdda803fc039d386c944f",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/co_caldas_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 62022,
+      "sha256": "8040b6accf615d7d8f5305a6b70908940845e9133be56cbee30e0cf3a78d7cf9",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_co_caldas_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1212,
+      "sha256": "51c540f830008de184ee8aa25843007785c3667e79f6eb4518e2048b86bb76e3",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_co_caldas.csv",
+      "kind": "validation_table",
+      "bytes": 81181,
+      "sha256": "d8dd8054f09bd210d49f1dec95e5f79bde6694db70134900b1eefd575e730952",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/10_NASA_co_caldas.json",
+      "kind": "system_metadata",
+      "bytes": 1730,
+      "sha256": "cd4640461320b516a54a1054b02b37595350d540e6af1110c3f2b96e121548a8",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/co_antioquia_attempt1.json",
+      "kind": "http_response_body",
+      "bytes": 62069,
+      "sha256": "9f46b577a674ff0332bcf2465b12745021d64386d3bc31804ed7288be1fb2b3f",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/nasa_co_antioquia_metadata.json",
+      "kind": "system_metadata",
+      "bytes": 1215,
+      "sha256": "8980c519ae7eae93253471b659449f01b6fb82afe1a92bdc0b256b9d5d2e2a98",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_co_antioquia.csv",
+      "kind": "validation_table",
+      "bytes": 82693,
+      "sha256": "d912c8f5179fea692203a5aa4ad90d1009556fcfdbe5e96887e7dfdaac17c3ec",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/11_NASA_co_antioquia.json",
+      "kind": "system_metadata",
+      "bytes": 1739,
+      "sha256": "0f9467957e64aadf49b94e14629285f267e0fbac76a5f18fcc7dd23c3d471c62",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_pairwise.csv",
+      "kind": "validation_table",
+      "bytes": 6235,
+      "sha256": "a6c7e0901f08fd2df25f01cde10affb6872ad15359a0c66b513e8ebaa35a535b",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/weather_comparison.json",
+      "kind": "system_metadata",
+      "bytes": 211,
+      "sha256": "52e0abf44d6229fd265458b32b5d6a2b2f27c8ae6969b716cc0c71cfc5eb5aae",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2023_attempt1.zip",
+      "kind": "http_response_body",
+      "bytes": 2202972,
+      "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2023_member.txt",
+      "kind": "archive_member",
+      "bytes": 20244825,
+      "sha256": "2a1a640f7ac6c3db58971dc74d5f1afc428587d1076d49c84b89639e2b32984f",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2024_attempt1.zip",
+      "kind": "http_response_body",
+      "bytes": 2381296,
+      "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2024_member.txt",
+      "kind": "archive_member",
+      "bytes": 21944711,
+      "sha256": "3505542af3b83cb6c0187b7c6161f5b002828e461d0e57a74230c302a7ea2b95",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2025_attempt1.zip",
+      "kind": "http_response_body",
+      "bytes": 2420076,
+      "sha256": "17ac2fef1b53303d01e486bbf5768a4e062308a3c34a2970871f3eab89829cbc",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/cftc/disaggregated_futures_only_2025_member.txt",
+      "kind": "archive_member",
+      "bytes": 22011924,
+      "sha256": "887708608fadb3c25f324ac37546c291b30d854e9f404ee2cef4acbf560afb6b",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/cftc_archive_inventory.json",
+      "kind": "system_metadata",
+      "bytes": 25879,
+      "sha256": "8d6f43ee6ef74b45f5ebc5a46d7d6f10d68b84a5e15274fc96b08eb974119b37",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/cot_083731.csv",
+      "kind": "validation_table",
+      "bytes": 14800,
+      "sha256": "289be5cf4a5599bac3a6278738057a90aa5e8158fe4d615eb1b6abdebcb57f47",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/results/12_CFTC_083731.json",
+      "kind": "system_metadata",
+      "bytes": 1135,
+      "sha256": "f98fbd6a476dfca9937ccdcbbab5e98ba23d5e542f7f12fe1ab36c4342ee1da1",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/validation_summary.csv",
+      "kind": "validation_summary",
+      "bytes": 4578,
+      "sha256": "ae69b66e1f36336242862f675ec2343ab7ff9c94807845dcad5f5892239b744c",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/validation_summary.json",
+      "kind": "system_metadata",
+      "bytes": 18841,
+      "sha256": "93add34ec506a2648f7063c38bd0b756ad7b857d5183dc9fd055f48834d10c79",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/requests.jsonl",
+      "kind": "request_log",
+      "bytes": 11961,
+      "sha256": "ceb0269718077372a8043a5ce6f951848d05ae9c79df921e2ff848e01cee16d9",
+      "secret_redaction_applied": false
+    },
+    {
+      "path": "data/raw/probes/20260912T063021795259Z_99d695f0/system/executed_notebook.ipynb",
+      "kind": "executed_notebook",
+      "bytes": 94015,
+      "sha256": "26fc754cf16b809a340389d67bb9aa2b17e33298876d2dc29a2a11b60d2e2cd7",
+      "secret_redaction_applied": false
+    }
+  ],
+  "notebook_execution": {
+    "status": "completed",
+    "error_type": null,
+    "completed_at": "2026-09-12T06:31:44.054689+00:00"
+  }
+}

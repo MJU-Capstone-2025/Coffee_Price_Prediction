@@ -1,0 +1,36 @@
+{
+  "source": "FRED",
+  "dataset_id": "DFF",
+  "request_status": "success",
+  "http_status": 200,
+  "parse_status": "success",
+  "raw_row_count": 732,
+  "filtered_row_count": 732,
+  "observed_start": "2023-12-31",
+  "observed_end": "2025-12-31",
+  "missing_count": 0,
+  "duplicate_count": 0,
+  "unit": "Percent",
+  "unit_verification_status": "verified_series_metadata",
+  "validation_status": "warning",
+  "warnings": [
+    "current observation snapshot; original publication times/vintages not reconstructed"
+  ],
+  "retrieved_at": "2026-09-12T08:31:03.808879+00:00",
+  "artifact_path": "data/raw/probes/20260912T083059334258Z_46f169ca/validation/macro_DFF.csv",
+  "metadata_http_status": 200,
+  "raw_artifact_path": "data/raw/probes/20260912T083059334258Z_46f169ca/raw/fred/DFF_observations_attempt1.json",
+  "raw_invalid_date_count": 0,
+  "sentinel_count": 0,
+  "invalid_date_count": 0,
+  "dates_sorted": true,
+  "frequency": "Daily, 7-Day",
+  "seasonal_adjustment": "Not Seasonally Adjusted",
+  "negative_value_count": 0,
+  "missing_expected_calendar_dates": 0,
+  "violations": {
+    "invalid_dates": 0,
+    "duplicate_dates": 0,
+    "invalid_numbers": 0
+  }
+}

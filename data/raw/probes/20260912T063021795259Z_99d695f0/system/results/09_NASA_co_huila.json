@@ -1,0 +1,58 @@
+{
+  "source": "NASA",
+  "dataset_id": "co_huila",
+  "request_status": "success",
+  "http_status": 200,
+  "parse_status": "success",
+  "raw_row_count": 732,
+  "filtered_row_count": 732,
+  "observed_start": "2023-12-31",
+  "observed_end": "2025-12-31",
+  "missing_count": 0,
+  "duplicate_count": 0,
+  "unit": "{\"PRECTOTCORR\": \"mm/day\", \"RH2M\": \"%\", \"T2M\": \"C\", \"T2M_MAX\": \"C\", \"T2M_MIN\": \"C\"}",
+  "unit_verification_status": "verified_response_metadata",
+  "validation_status": "warning",
+  "warnings": [
+    "retrospective current weather snapshot; historical available_at unknown"
+  ],
+  "retrieved_at": "2026-09-12T06:31:30.138965+00:00",
+  "artifact_path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/weather_co_huila.csv",
+  "raw_artifact_path": "data/raw/probes/20260912T063021795259Z_99d695f0/raw/nasa/co_huila_attempt1.json",
+  "payload_messages": [],
+  "response_time_standard": "UTC",
+  "fill_value": -999.0,
+  "units_by_variable": {
+    "PRECTOTCORR": "mm/day",
+    "T2M": "C",
+    "T2M_MIN": "C",
+    "T2M_MAX": "C",
+    "RH2M": "%"
+  },
+  "geometry_interpretation": "unknown; see response geometry",
+  "grid_id": null,
+  "raw_invalid_date_count": 0,
+  "sentinel_counts": {
+    "PRECTOTCORR": 0,
+    "T2M": 0,
+    "T2M_MIN": 0,
+    "T2M_MAX": 0,
+    "RH2M": 0
+  },
+  "invalid_date_count": 0,
+  "dates_sorted": true,
+  "missing_expected_calendar_dates": 0,
+  "missing_dates": [],
+  "violations": {
+    "invalid_dates": 0,
+    "duplicate_dates": 0,
+    "missing_dates": 0,
+    "duplicate_json_keys": 0,
+    "invalid_numbers": 0,
+    "negative_precipitation": 0,
+    "humidity_out_of_range": 0,
+    "temperature_order": 0,
+    "nonfinite_values": 0,
+    "wrong_time_standard": 0
+  }
+}

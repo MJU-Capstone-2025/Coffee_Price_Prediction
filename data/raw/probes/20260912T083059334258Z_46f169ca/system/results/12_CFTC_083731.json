@@ -1,0 +1,41 @@
+{
+  "source": "CFTC",
+  "dataset_id": "083731",
+  "request_status": "success",
+  "http_status": [
+    200,
+    200,
+    200
+  ],
+  "parse_status": "success",
+  "raw_row_count": 39765,
+  "filtered_row_count": 105,
+  "observed_start": "2024-01-02",
+  "observed_end": "2025-12-30",
+  "missing_count": 0,
+  "duplicate_count": 0,
+  "unit": "contracts",
+  "unit_verification_status": "official_CFTC_report_definition",
+  "validation_status": "warning",
+  "warnings": [
+    "report_date is not release date; publication/available_at not reconstructed"
+  ],
+  "retrieved_at": "2026-09-12T08:31:14.117115+00:00",
+  "artifact_path": "data/raw/probes/20260912T083059334258Z_46f169ca/validation/cot_083731.csv",
+  "raw_count_scope": "all markets across successfully parsed yearly archives",
+  "coffee_raw_row_count": 157,
+  "invalid_date_count": 0,
+  "dates_sorted": false,
+  "market_names": [
+    "COFFEE C - ICE FUTURES U.S."
+  ],
+  "violations": {
+    "duplicate_dates": 0,
+    "invalid_dates": 0,
+    "invalid_numbers": 0,
+    "missing_numbers": 0,
+    "negative_positions": 0,
+    "wrong_market_code": 0,
+    "unexpected_market_name": 0
+  }
+}

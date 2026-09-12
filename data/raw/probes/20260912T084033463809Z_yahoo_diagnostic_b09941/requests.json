@@ -1,0 +1,28 @@
+[
+  {
+    "endpoint": "https://query2.finance.yahoo.com/v8/finance/chart/KC=F",
+    "parameters": {
+      "period1": 1703998800,
+      "period2": 1767243600,
+      "interval": "1d",
+      "includePrePost": false,
+      "events": "div,splits,capitalGains"
+    },
+    "http_status": 200,
+    "retrieved_at": "2026-09-12T08:40:34.929675+00:00",
+    "artifact_path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/chart_response_1.json"
+  },
+  {
+    "endpoint": "https://query2.finance.yahoo.com/v8/finance/chart/BRL=X",
+    "parameters": {
+      "period1": 1703980800,
+      "period2": 1767225600,
+      "interval": "1d",
+      "includePrePost": false,
+      "events": "div,splits,capitalGains"
+    },
+    "http_status": 200,
+    "retrieved_at": "2026-09-12T08:40:35.253422+00:00",
+    "artifact_path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/chart_response_2.json"
+  }
+]

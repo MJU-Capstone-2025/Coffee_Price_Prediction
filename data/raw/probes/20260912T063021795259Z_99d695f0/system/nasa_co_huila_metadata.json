@@ -1,0 +1,58 @@
+{
+  "requested_location": {
+    "region_id": "co_huila",
+    "country": "Colombia",
+    "region": "Huila",
+    "point": "Gigante / Jorge Villamil",
+    "latitude": 2.3333,
+    "longitude": -75.5167
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -75.517,
+      2.333,
+      1609.32
+    ]
+  },
+  "header": {
+    "title": "NASA/POWER Source Native Resolution Daily Data",
+    "api": {
+      "version": "v2.9.7",
+      "name": "POWER Daily API"
+    },
+    "sources": [
+      "MERRA2",
+      "POWER"
+    ],
+    "fill_value": -999.0,
+    "time_standard": "UTC",
+    "start": "20231231",
+    "end": "20251231"
+  },
+  "parameters": {
+    "PRECTOTCORR": {
+      "units": "mm/day",
+      "longname": "Precipitation Corrected"
+    },
+    "T2M": {
+      "units": "C",
+      "longname": "Temperature at 2 Meters"
+    },
+    "T2M_MIN": {
+      "units": "C",
+      "longname": "Temperature at 2 Meters Minimum"
+    },
+    "T2M_MAX": {
+      "units": "C",
+      "longname": "Temperature at 2 Meters Maximum"
+    },
+    "RH2M": {
+      "units": "%",
+      "longname": "Relative Humidity at 2 Meters"
+    }
+  },
+  "messages": [],
+  "geometry_interpretation": "unknown; see response geometry",
+  "grid_id": null
+}

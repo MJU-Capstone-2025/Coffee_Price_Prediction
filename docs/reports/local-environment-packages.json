@@ -1,0 +1,270 @@
+{
+  "python": "3.14.7",
+  "implementation": "cpython",
+  "machine": "arm64",
+  "macos": "27.0",
+  "sysconfig_platform": "macosx-26.0-arm64",
+  "pip": "26.2.1",
+  "venv": true,
+  "installation_policy": "--only-binary=:all:; preserve existing numpy/pandas; no Python or package substitution",
+  "new_installs": [
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "wheel_filename": "requests-2.34.2-py3-none-any.whl",
+      "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.1",
+      "wheel_filename": "charset_normalizer-3.5.1-cp314-cp314-macosx_10_15_universal2.whl",
+      "sha256": "c428c6c31eb5f4277d7f8eccaf767fbd548ddd5ce3c8b4f4cbbfab3d96b5904c"
+    },
+    {
+      "name": "idna",
+      "version": "3.19",
+      "wheel_filename": "idna-3.19-py3-none-any.whl",
+      "sha256": "815e7be7a7806d54abb586dc943addc79e8b2ee16915059658cbeff4b1b43bf4"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.7.0",
+      "wheel_filename": "urllib3-2.7.0-py3-none-any.whl",
+      "sha256": "9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897"
+    },
+    {
+      "name": "duckdb",
+      "version": "1.5.5",
+      "wheel_filename": "duckdb-1.5.5-cp314-cp314-macosx_11_0_arm64.whl",
+      "sha256": "8c11775cc99a447618d5f1840126db17f2652f3eae05529df4f81f40e2df7151"
+    },
+    {
+      "name": "pyarrow",
+      "version": "25.0.1",
+      "wheel_filename": "pyarrow-25.0.1-cp314-cp314-macosx_12_0_arm64.whl",
+      "sha256": "bf0b672390cdcb640d7288f96b826d71ff4e9abb254a86c89890baf51a29cee6"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "wheel_filename": "pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl",
+      "sha256": "34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310"
+    },
+    {
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "wheel_filename": "openpyxl-3.1.5-py2.py3-none-any.whl",
+      "sha256": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2"
+    },
+    {
+      "name": "yfinance",
+      "version": "1.7.0",
+      "wheel_filename": "yfinance-1.7.0-py3-none-any.whl",
+      "sha256": "91281ecd1f71069a37155ff8653aff2d3085f3492bd8721f18b70955da62911a"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "wheel_filename": "pytest-9.1.1-py3-none-any.whl",
+      "sha256": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0",
+      "wheel_filename": "pluggy-1.6.0-py3-none-any.whl",
+      "sha256": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"
+    },
+    {
+      "name": "beautifulsoup4",
+      "version": "4.15.0",
+      "wheel_filename": "beautifulsoup4-4.15.0-py3-none-any.whl",
+      "sha256": "d6f88de62e1d4e38ecb1077eb9724cd0eff29d2a08ca16a401e9b9e93f117cf9"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "wheel_filename": "certifi-2026.7.22-py3-none-any.whl",
+      "sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"
+    },
+    {
+      "name": "curl_cffi",
+      "version": "0.16.3",
+      "wheel_filename": "curl_cffi-0.16.3-cp310-abi3-macosx_11_0_arm64.whl",
+      "sha256": "f3b63da797912bc82911e34dfe449725514e4281527fb516931fc457087cfb44"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "wheel_filename": "cffi-2.1.1-cp314-cp314-macosx_11_0_arm64.whl",
+      "sha256": "661c298b4821edebead0c91edd2b00374d67ad7c5a1f7a91d4442633b79d6a72"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0",
+      "wheel_filename": "iniconfig-2.3.0-py3-none-any.whl",
+      "sha256": "f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "wheel_filename": "lxml-6.1.3-cp314-cp314-macosx_10_15_universal2.whl",
+      "sha256": "2bec13085dc8ef48a3fe62f7dfcacfeda2c785cdf19cc8eeda2bb9ed081da165"
+    },
+    {
+      "name": "multitasking",
+      "version": "0.0.13",
+      "wheel_filename": "multitasking-0.0.13-py3-none-any.whl",
+      "sha256": "ec9243af140c67bfe52dc98d7173c294512735a88e8425c458b250db99dc2b48"
+    },
+    {
+      "name": "peewee",
+      "version": "4.5.1",
+      "wheel_filename": "peewee-4.5.1-py3-none-any.whl",
+      "sha256": "dbbdc93e9be08d1df49ceed48dc5d609bfeda6112848086f1f6c1f1debe70975"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.11.8",
+      "wheel_filename": "platformdirs-4.11.8-py3-none-any.whl",
+      "sha256": "52f2f181bbfde907966932cc8312d967d02976422d66d537ea16092b8e291081"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.1",
+      "wheel_filename": "protobuf-7.36.1-cp310-abi3-macosx_10_9_universal2.whl",
+      "sha256": "3cf2ee25d006cee57294a1196ea43b37feb78e0dcd1e8af5c1aeddb777655aca"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "wheel_filename": "pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "name": "pytz",
+      "version": "2026.3.post1",
+      "wheel_filename": "pytz-2026.3.post1-py2.py3-none-any.whl",
+      "sha256": "dd95840dd199baea12d9cc096a1d452caa6596a1c1e4b5f3dbd1541855d5e815"
+    },
+    {
+      "name": "soupsieve",
+      "version": "2.9.2",
+      "wheel_filename": "soupsieve-2.9.2-py3-none-any.whl",
+      "sha256": "8089a26fd974ca7a1f30276d3d8492ab266ab15af581642dfe8aa162e0c1c823"
+    },
+    {
+      "name": "websockets",
+      "version": "17.1",
+      "wheel_filename": "websockets-17.1-cp314-cp314-macosx_11_0_arm64.whl",
+      "sha256": "96abdecbaae746851b87c3a36cb4a661df93ca3d92f114270f79228bf1d00de6"
+    },
+    {
+      "name": "et_xmlfile",
+      "version": "2.0.0",
+      "wheel_filename": "et_xmlfile-2.0.0-py3-none-any.whl",
+      "sha256": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.0",
+      "wheel_filename": "pycparser-3.0-py3-none-any.whl",
+      "sha256": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992"
+    }
+  ],
+  "import_and_wheel_tested": [
+    {
+      "name": "numpy",
+      "version": "2.5.3",
+      "wheel_tags": [
+        "cp314-cp314-macosx_14_0_arm64"
+      ]
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.5",
+      "wheel_tags": [
+        "cp314-cp314-macosx_11_0_arm64"
+      ]
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "wheel_tags": [
+        "py3-none-any"
+      ]
+    },
+    {
+      "name": "duckdb",
+      "version": "1.5.5",
+      "wheel_tags": [
+        "cp314-cp314-macosx_11_0_arm64"
+      ]
+    },
+    {
+      "name": "pyarrow",
+      "version": "25.0.1",
+      "wheel_tags": [
+        "cp314-cp314-macosx_12_0_arm64"
+      ]
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "wheel_tags": [
+        "cp314-cp314-macosx_11_0_arm64"
+      ]
+    },
+    {
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "wheel_tags": [
+        "py2-none-any",
+        "py3-none-any"
+      ]
+    },
+    {
+      "name": "yfinance",
+      "version": "1.7.0",
+      "wheel_tags": [
+        "py3-none-any"
+      ]
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "wheel_tags": [
+        "py3-none-any"
+      ]
+    },
+    {
+      "name": "curl_cffi",
+      "version": "0.16.3",
+      "wheel_tags": [
+        "cp310-abi3-macosx_11_0_arm64"
+      ]
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "wheel_tags": [
+        "cp314-cp314-macosx_11_0_arm64"
+      ]
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "wheel_tags": [
+        "cp314-cp314-macosx_10_15_universal2"
+      ]
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.1",
+      "wheel_tags": [
+        "cp310-abi3-macosx_10_9_universal2"
+      ]
+    }
+  ],
+  "functional_test_status": "timestamp fixture assertion pending resolution; see local-environment-validation.md",
+  "live_core4_api": "not run"
+}

@@ -1,0 +1,40 @@
+{
+  "source": "Yahoo",
+  "dataset_id": "KC=F",
+  "request_status": "success",
+  "http_status": null,
+  "parse_status": "success",
+  "raw_row_count": 506,
+  "filtered_row_count": 506,
+  "observed_start": "2024-01-02",
+  "observed_end": "2025-12-31",
+  "missing_count": 8,
+  "duplicate_count": 0,
+  "unit": "US cents/lb",
+  "unit_verification_status": "provider_subunit_and_ICE_specification",
+  "validation_status": "failed",
+  "warnings": [
+    "KC=F contract connection and roll methodology unverified; no roll adjustment"
+  ],
+  "retrieved_at": "2026-09-12T06:30:23.227785+00:00",
+  "artifact_path": "data/raw/probes/20260912T063021795259Z_99d695f0/validation/market_KC_F.csv",
+  "library_return_path": "data/raw/probes/20260912T063021795259Z_99d695f0/library_return/yahoo/KC_F.csv",
+  "metadata_status": "success",
+  "invalid_date_count": 0,
+  "dates_sorted": true,
+  "volume_zero_count": 33,
+  "volume_missing_count": 0,
+  "provider_index_timezone": "America/New_York",
+  "provider_currency": "USX",
+  "provider_name": "Coffee Dec 26  Coffee Dec 26 ",
+  "contract_specification_unit": "US cents/lb",
+  "contract_specification_source": "https://www.ice.com/products/15/Coffee-C-Futures",
+  "violations": {
+    "invalid_dates": 0,
+    "duplicate_dates": 0,
+    "high_below_low": 0,
+    "open_outside_range": 0,
+    "close_outside_range": 73,
+    "nonfinite_ohlc": 0
+  }
+}

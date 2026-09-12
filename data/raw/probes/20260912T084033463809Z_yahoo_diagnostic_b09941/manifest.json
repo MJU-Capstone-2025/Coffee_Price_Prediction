@@ -1,0 +1,48 @@
+{
+  "original_probe": "20260912T063021795259Z_99d695f0",
+  "completed_at": "2026-09-12T08:40:35.290920+00:00",
+  "scope": "same approved period; Yahoo only; no policy or value changes",
+  "artifacts": [
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/chart_response_1.json",
+      "sha256": "45f0f61e8b7312ae20ec37d31b777ce97e96f86981a4ef37cc77f34f300fd0c8",
+      "bytes": 47858
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/KC_F_library_return.csv",
+      "sha256": "c19198e57af255df4f5fe1c86fa64d1df3d991bec42710c2305507b1610c29f4",
+      "bytes": 54279
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/KC_F_ohlc_violations.csv",
+      "sha256": "1d7257d912be8213511b633d904dfe4f603b712ae160c650619e2e85312230c2",
+      "bytes": 8843
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/chart_response_2.json",
+      "sha256": "fbd2fab9e0f1a08b85ff2ce4bccaa6770838f114e3dcae6a8ae5cb92f10ef604",
+      "bytes": 54846
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/BRL_X_library_return.csv",
+      "sha256": "9de0355a5958c0c43f02126c84f318b8f7cd90c267affae368fa50b4375e21d0",
+      "bytes": 61436
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/BRL_X_ohlc_violations.csv",
+      "sha256": "9efccfcbd0a68c4e9b8b1daafeb269b841eea5bb3852a125de4422c7cb385ba5",
+      "bytes": 680
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/requests.json",
+      "sha256": "289bc414854b4fe043e03fcee316c2f4744415f33bc285b14194414cd5d918f5",
+      "bytes": 909
+    },
+    {
+      "path": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/diagnostic_summary.json",
+      "sha256": "e1437f777a1cc65ed258f10c7a5ad80fe57ca6fe98e6fbee6cf36cb124a92151",
+      "bytes": 2077
+    }
+  ],
+  "yfinance_version": "1.7.0"
+}

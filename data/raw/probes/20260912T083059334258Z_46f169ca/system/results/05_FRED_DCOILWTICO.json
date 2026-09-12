@@ -1,0 +1,35 @@
+{
+  "source": "FRED",
+  "dataset_id": "DCOILWTICO",
+  "request_status": "success",
+  "http_status": 200,
+  "parse_status": "success",
+  "raw_row_count": 523,
+  "filtered_row_count": 523,
+  "observed_start": "2024-01-01",
+  "observed_end": "2025-12-31",
+  "missing_count": 25,
+  "duplicate_count": 0,
+  "unit": "Dollars per Barrel",
+  "unit_verification_status": "verified_series_metadata",
+  "validation_status": "warning",
+  "warnings": [
+    "current observation snapshot; original publication times/vintages not reconstructed"
+  ],
+  "retrieved_at": "2026-09-12T08:31:05.677303+00:00",
+  "artifact_path": "data/raw/probes/20260912T083059334258Z_46f169ca/validation/macro_DCOILWTICO.csv",
+  "metadata_http_status": 200,
+  "raw_artifact_path": "data/raw/probes/20260912T083059334258Z_46f169ca/raw/fred/DCOILWTICO_observations_attempt1.json",
+  "raw_invalid_date_count": 0,
+  "sentinel_count": 25,
+  "invalid_date_count": 0,
+  "dates_sorted": true,
+  "frequency": "Daily",
+  "seasonal_adjustment": "Not Seasonally Adjusted",
+  "negative_value_count": 0,
+  "violations": {
+    "invalid_dates": 0,
+    "duplicate_dates": 0,
+    "invalid_numbers": 0
+  }
+}
