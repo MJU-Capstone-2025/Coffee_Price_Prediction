@@ -24,6 +24,8 @@ python data_code/02_backfill_10y.py --sources yahoo fred
 
 결과는 `data/processed/2016-01-01_2025-12-31/`에 저장합니다. 다른 기간은 별도 폴더를 사용합니다. 같은 기간을 다시 실행하면 해당 테이블을 갱신하고, 실패한 테이블의 기존 파일은 유지합니다. 실패한 소스 이름은 터미널에 표시하며 하나라도 실패하면 종료 코드 1을 반환합니다.
 
+기상 파일은 30일 집계에 쓸 버퍼를 앞뒤로 더 받습니다. 기본 기간에서는 `2015-12-02 ~ 2026-01-30`이 저장되며 모델 기간은 2016~2025년 그대로입니다. 기상만 수집하려면 `python data_code/02_backfill_10y.py --sources nasa`를 실행합니다.
+
 ## 수집하는 데이터
 
 | 데이터 | 출처 | 저장 파일 |
@@ -40,7 +42,7 @@ python data_code/02_backfill_10y.py --sources yahoo fred
 - [02_backfill_10y.py](data_code/02_backfill_10y.py): 수집 → 결측 표시 정리 → Parquet 저장.
 - [regions.yaml](configs/regions.yaml): 기상 데이터를 요청할 6개 좌표.
 - [01_small_batch_probe.ipynb](data_code/01_small_batch_probe.ipynb): 저장된 파일럿 자료의 검증 표와 가격 그래프.
-- [03_eda_and_baseline_models.ipynb](data_code/03_eda_and_baseline_models.ipynb): As-of Join, 피처 21개, EDA와 기준 모델 비교. 기존 `.venv` 커널에서 위부터 실행합니다.
+- [03_eda_and_baseline_models.ipynb](data_code/03_eda_and_baseline_models.ipynb): As-of Join, 피처 21개, 박스플롯·계절성·상관관계·회귀 분석과 기준 모델 비교. 패키지가 설치된 기존 Python 커널에서 위부터 실행합니다.
 - `data_code/old_code/`, `data/old_data/`, `docs/old_docs/`: 학부 프로젝트 자료.
 
 설계 선택은 [설계 노트](docs/architecture.md), Yahoo 가격 조사는 [트러블슈팅](docs/troubleshooting.md)에 정리했습니다.
@@ -52,15 +54,19 @@ python data_code/02_backfill_10y.py --sources yahoo fred
 | 모델 | MAE | RMSE | 방향성 정확도 |
 |---|---:|---:|---:|
 | Naive (수익률 0) | 0.042810 | 0.054442 | 0.40% |
-| Ridge | 0.044319 | 0.057085 | 46.79% |
-| CatBoost | 0.042976 | 0.054631 | 48.19% |
+| Ridge | 0.044329 | 0.057099 | 46.79% |
+| CatBoost | 0.043006 | 0.054674 | 47.19% |
 
 0은 보합으로 셉니다. Naive의 방향성 정확도는 실제 수익률이 0인 비율이며, 오차 비교를 위한 기준 모델입니다. CatBoost는 아직 Naive를 넘지 못했습니다. 중요도는 Huila의 30일 평균 기온, 20거래일 수익률, BRL 환율 순이었습니다.
+
+개발 구간의 종가와 WTI·COT 순매수 비율 사이에는 상관이 있었지만, 5거래일 뒤 수익률과의 상관은 약했습니다. 21개 단일 피처 회귀의 검증 R²는 모두 음수였습니다. 기상 버퍼로 초반 결측은 해결했지만, 예측력이 좋아진 것은 아니었습니다.
 
 관측일에 바로 붙이지 않고 공개 지연을 가정해 병합했습니다. 과거 발표시각·수정 전 값은 파일에 없으며, 지연 가정과 COT 발표 예외는 notebook에 적었습니다. 가격 그래프도 매일 계산한 5거래일 앞 예측을 해당 날짜에 맞춰 그렸습니다.
 
 ## Troubleshooting & 배운 점
 
 Yahoo 커피 데이터에서 Close가 당일 High–Low 범위를 벗어난 행을 발견했습니다. 원응답과 대조해보니 Yahoo 응답에도 같은 값이 있었습니다. 정산 방식이나 계약 연결 차이가 원인일 수 있어, 값을 억지로 고치기보다 가격 피처를 과거 Close로 만들었습니다. 로그수익률로 바꿔도 롤오버 영향이 없어지는 것은 아니라는 점도 함께 고려하고 있습니다.
+
+기상 피처의 초반 NaN은 원자료 누락이 아니라 30일 집계에 필요한 과거 관측값 부족이었습니다. 중앙값 대치를 없애고 기상 수집에 버퍼를 뒀습니다. [버퍼 전후 Jupyter 출력과 해결 과정](docs/troubleshooting.md#30일-기상-집계에서-생긴-초반-nan)을 함께 남겼습니다.
 
 파일럿 원응답은 `data/raw/pilot_probe/`에 소스별로 한 벌만 보관합니다. `.env`와 수집 데이터는 로컬 파일이며, 공개 저장소에서 새로 받으려면 수집 스크립트를 실행합니다.

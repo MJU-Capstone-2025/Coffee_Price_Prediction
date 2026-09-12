@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
 WEATHER_COLUMNS = ["PRECTOTCORR", "T2M", "T2M_MIN", "T2M_MAX", "RH2M"]
+WEATHER_BUFFER_DAYS = 30
 COT_COLUMNS = {
     "CFTC_Contract_Market_Code": "market_code",
     "Market_and_Exchange_Names": "market_name",
@@ -187,8 +188,13 @@ def main():
         for name, fetch, inputs in jobs:
             print(f"수집: {name}", flush=True)
             try:
-                frame = fetch(*inputs, args.start, args.end)
-                save_table(frame, output / f"{name}.parquet", args.start, args.end)
+                start, end = args.start, args.end
+                if name.startswith("weather_"):
+                    # 30일 집계를 위해 원자료에 여유를 둔다. 모델 기간은 그대로다.
+                    start -= timedelta(days=WEATHER_BUFFER_DAYS)
+                    end += timedelta(days=WEATHER_BUFFER_DAYS)
+                frame = fetch(*inputs, start, end)
+                save_table(frame, output / f"{name}.parquet", start, end)
             except Exception as exc:
                 # 실패한 소스 이름과 오류만 남기고 나머지 수집은 계속한다.
                 message = str(exc).replace(os.getenv("FRED_API_KEY") or "<no-key>", "<redacted>")

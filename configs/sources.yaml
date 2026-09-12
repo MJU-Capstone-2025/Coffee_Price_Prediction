@@ -39,6 +39,7 @@ nasa:
   time_standard: UTC
   end_inclusive: true
   regions_file: configs/regions.yaml
+  buffer_days: 30  # 요청 기간 앞뒤로 추가 수집.
   variables:
     PRECTOTCORR: mm/day
     T2M: Celsius
