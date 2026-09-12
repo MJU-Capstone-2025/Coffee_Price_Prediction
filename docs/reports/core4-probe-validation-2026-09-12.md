@@ -105,7 +105,7 @@ KC=F 응답의 currency는 **USX**였고 [ICE Coffee C 상품 명세](https://ww
 - `raw/fred/`, `raw/nasa/`: requests 응답 JSON 바이트. `raw/cftc/`: 공식 ZIP 및 압축 해제 원본 텍스트. 정상 응답 원문에 비밀정보 치환은 발생하지 않았다.
 - `library_return/yahoo/`: 변환 전 yfinance CSV/pickle 및 반환 메타데이터.
 - `validation/`: 소스별 정규화·승인 구간 필터 CSV 12개 및 weather_pairwise.csv. 원본 응답과 다르며 파생 예측 피처는 없다.
-- `system/`: 안전한 요청 로그, 시리즈/변수 메타데이터, 개별 검증 결과, 종합표 CSV/JSON, manifest, 실행된 notebook 사본. `retrieved_at`은 UTC이며 발표일·관측일과 구분했다.
+- `system/`: 안전한 요청 로그, 시리즈/변수 메타데이터, 개별 검증 결과, 종합표 CSV/JSON, manifest. 당시 여기에 저장했던 실행 Notebook 사본은 후속 정리에서 `data_code/old_code/probe_runs/20260912T063021795259Z_99d695f0/executed_notebook.ipynb`로 내용 변경 없이 옮겼다. [이동 매핑](directory-reorganization-2026-09-12.json)으로 최초 manifest의 경로를 추적한다. `retrieved_at`은 UTC이며 발표일·관측일과 구분했다.
 - manifest의 65개 참조 산출물 SHA-256을 대조했고 불일치 0건. manifest 자신의 해시는 자기 참조를 피하기 위해 목록에서 제외했다.
 
 ## 실행한 검증과 재실행
@@ -122,7 +122,11 @@ KC=F 응답의 currency는 **USX**였고 [ICE Coffee C 상품 명세](https://ww
 | `.venv/bin/python /tmp/verify_coffee_probe.py` | manifest 65개 SHA-256 일치, raw→validation 값 대조 통과, 22개 셀 실행 확인, 71개 산출물/문서에서 비밀값 검출 0, `git diff --check` 통과 |
 | 기존 파일·원본 notebook 보존 검사 | STATUS 갱신 전 기존 30개 파일 모두 동일. 갱신 후에는 STATUS만 변경, 나머지 29개 불변. 레거시 notebook 4개는 현재 HEAD 원문과도 byte 일치 |
 
-기존 notebook 편집기에서 `Coffee Probe (.venv Python 3.14)` 커널을 선택하고 **Restart Kernel → Run All → Save**로 재실행할 수 있다. `.env`를 준비하되 키를 셀에 쓰지 않는다. 매 실행 새 run_id가 생기며 기존 raw는 덮어쓰지 않는다. 또는 저장소 루트에서 다음 Python API를 사용한다. 이 명령은 실제 외부 요청을 다시 수행한다.
+기존 notebook 편집기에서 `Coffee Probe (.venv Python 3.14)` 커널을 선택하고 **Restart Kernel → Run All → Save**로 재실행할 수 있다. `.env`를 준비하되 키를 셀에 쓰지 않는다. 매 실행 새 run_id가 생기며 기존 raw는 덮어쓰지 않는다. 현재 단계에서는 이 단일 Notebook을 사용하고 별도 Python 실행기를 필수 단계로 두지 않는다.
+
+### 당시 Python API 실행 기록 — 현재 실행 절차 아님
+
+아래 블록은 최초 검증 당시 사용한 방식이다. 후속 디렉터리 정리 이후에는 `data/` 안에 실행 Notebook 사본을 저장하지 않는다. 최초 명령의 근거로만 보존하며 현재 사용 방법은 [README](../../README.md)를 따른다. 이 블록을 실행하면 외부 요청이 발생하므로 기존 결과 확인을 위해 실행하지 않는다.
 
 ```sh
 .venv/bin/python - <<'PY'

@@ -1,5 +1,7 @@
 # Yahoo KC=F / BRL=X OHLC 추가 원인 검증 기술 메모
 
+> 후속 디렉터리 정리: 아래 조사 결과·실행 명령·manifest는 조사 당시 기록이다. 진단 Python은 `tools/archive/yahoo_ohlc/`, 참고 문서는 `docs/references/yahoo_ohlc/`, 실행·코드 검토 증거는 `docs/reports/evidence/`로 내용 변경 없이 이동했다. 현재 경로는 [이동 매핑](directory-reorganization-2026-09-12.json), 현재 실행 흐름은 [프로젝트 README](../../README.md)를 따른다. 현재 활성 수집 진입점은 Notebook 하나이며 보관 Python을 직접 실행하는 절차를 유지하지 않는다.
+
 ## 1. 문제 정의
 
 **확인됨:** 승인 구간에서 KC=F 73행·BRL=X 4행의 범위 이탈이 보존된 Yahoo HTTP 응답부터 존재한다. 로컬 가격 조정·CSV 저장이 만든 현상이라는 설명은 반증됐다. **미확인:** 이 값이 공급자 오류인지, OHLC 필드의 가격 정의·집계·계약 연결 차이인지 확정할 증거는 아직 부족하다.
@@ -49,7 +51,7 @@ gap_pct = 100 * signed_gap / (Low if signed_gap < 0 else High)
 
 ### yfinance의 서로 다른 처리
 
-**확인됨:** 설치된 소스의 발췌·파일 해시는 [`implementation_evidence.json`](../../data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/implementation_evidence.json)에 보존했다.
+**확인됨:** 설치된 소스의 발췌·파일 해시는 [`implementation_evidence.json`](evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/implementation_evidence.json)에 보존했다.
 
 | 처리 | 실제 코드·관찰 | OHLC 이상과의 관계 |
 |---|---|---|
@@ -64,7 +66,7 @@ KC의 09:30 timestamp 6행 중 이상은 3행이고, 고정 KC 사례 6일은 �
 
 ### 공식 자료와 소량 요청
 
-공식 출처·확인 방식·지지 범위는 [`source_evidence.json`](../../data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/source_evidence.json)에 기록했다. ICE·yfinance 공식 문서 7개는 실제 HTTP 200 원문을 저장했다. Yahoo 도움말·BRL history 설명은 검색 도구가 반환한 **공식 페이지 본문**을 확인했으며, 이를 직접 받은 HTTP 원문이라고 부르지 않는다. Yahoo 직접 페이지 열기의 실패·429와 검색 본문 확인을 구분한다.
+공식 출처·확인 방식·지지 범위는 [`source_evidence.json`](evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/source_evidence.json)에 기록했다. ICE·yfinance 공식 문서 7개는 실제 HTTP 200 원문을 저장했다. Yahoo 도움말·BRL history 설명은 검색 도구가 반환한 **공식 페이지 본문**을 확인했으며, 이를 직접 받은 HTTP 원문이라고 부르지 않는다. Yahoo 직접 페이지 열기의 실패·429와 검색 본문 확인을 구분한다.
 
 [`PriceHistory`](https://ranaroussi.github.io/yfinance/reference/yfinance.price_history.html)는 intraday를 일반적으로 60일로 설명하지만, [`Price Repair`](https://ranaroussi.github.io/yfinance/advanced/price_repair.html)는 1h의 2년 한계를 별도로 설명한다. 설치된 소스도 1h/60m에 730일을 사용한다. 이는 조회 가능성의 근거이며 성공 보장은 아니다. repair는 실행하지 않았다.
 
@@ -199,9 +201,9 @@ KC의 09:30 timestamp 6행 중 이상은 3행이고, 고정 KC 사례 6일은 �
 
 `source_evidence.json`의 웹 검색 확인 메모는 HTTP 원문이 아니다. 기존 raw·library·validation 파일은 각자의 경로에서 그대로 보존했다. 이번 공식 자료 확인은 검증 목적이며 모델 입력 소스 채택을 의미하지 않는다.
 
-### 재실행 명령
+### 당시 재현 명령 — 보관 기록
 
-저장소 루트에서 다음 명령으로 네트워크 없이 재현한다. `mktemp`가 생성하는 고유 디렉터리 아래의 새 하위 경로를 사용해 이전 실행 결과를 덮어쓰지 않는다.
+다음은 디렉터리 정리 전에 실제 사용한 재현 방식이다. Python 파일이 보관 위치로 이동했고 내부의 당시 경로·보존 스냅샷도 유지하므로 **현재 실행 명령이 아니다**. 현재 수집·검증은 단일 Notebook에서 진행한다. 이 블록은 과거 검증 결과의 실행 근거로만 보존한다.
 
 ```sh
 RUN=data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9

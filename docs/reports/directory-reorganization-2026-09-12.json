@@ -1,0 +1,325 @@
+{
+  "recorded_at": "2026-09-12T12:35:38.089250+00:00",
+  "branch": "develop",
+  "start_commit": "0af285784b5d41d5e26e06d5dad86007418c2e1a",
+  "scope": "Reversible file placement; one active collection notebook; no API requests, model execution or data-value changes",
+  "moves": [
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/reproduce.py",
+      "to": "tools/archive/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/reproduce.py",
+      "sha256": "33b833c6fd44d3d1427f02450cb4a026b2f79b32f6b86a4990199ca485141781",
+      "bytes": 10992
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/collect_public_evidence.py",
+      "to": "tools/archive/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/collect_public_evidence.py",
+      "sha256": "d662fc65bda994c5b6ca4096f52e9a4643c357bb4a5db2e602872ffce5702731",
+      "bytes": 4242
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/verify_artifacts.py",
+      "to": "tools/archive/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/verify_artifacts.py",
+      "sha256": "e96171a20e19d3210600b9077187754750503f8c3958066d76b57df332e894fe",
+      "bytes": 8287
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/ice_coffee_spec.html",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/ice_coffee_spec.html",
+      "sha256": "3bf460334e4f062ea7154d2996a223968d7b09619341012e52bf649da7ed9b14",
+      "bytes": 88006
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/ice_expiry_calendar.html",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/ice_expiry_calendar.html",
+      "sha256": "906a338b238a6862a9ac08af47a1ee19788ca9ea9749ea73c81b6d4e3dabd2f2",
+      "bytes": 79884
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/ice_report_center.html",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/ice_report_center.html",
+      "sha256": "7dd7a4883bb166f549cfc744d853c616ddfd9b4040824bca4eac966838fb03ec",
+      "bytes": 108608
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/ice_settlement_window_2018.pdf",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/ice_settlement_window_2018.pdf",
+      "sha256": "99efaea7465a03e91ed640255f664f6043083367025919b90ebce8b00372f9cd",
+      "bytes": 143417
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/ice_trading_rules.pdf",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/ice_trading_rules.pdf",
+      "sha256": "2029345d13542306269d952e6963bba9fde356ab77e4bfc2ac907639a69c1a49",
+      "bytes": 438899
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/yfinance_history_docs.html",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/yfinance_history_docs.html",
+      "sha256": "005d50b2960fe451fdd317b12de881748331491bc7d80a177da2f21889b9cf53",
+      "bytes": 44396
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/public_responses/yfinance_repair_docs.html",
+      "to": "docs/references/yahoo_ohlc/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/yfinance_repair_docs.html",
+      "sha256": "74bfe1fe0b87ced4ae2c296bd98fcef88db028c305ea1f1033b567b13029e6d6",
+      "bytes": 33534
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/source_evidence.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/source_evidence.json",
+      "sha256": "e7f8d804c61db46d674151b1cab865cfe1a2da99a95a5e88783f9bdc54923f78",
+      "bytes": 4142
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/implementation_evidence.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/implementation_evidence.json",
+      "sha256": "0e601ef1b8972f796f7271cde74c0607d62ece07cca6a54f186c20e5d0d7899e",
+      "bytes": 8293
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/execution_log.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/execution_log.json",
+      "sha256": "c1411706bb3b17f6adca6dd070db8390d792831ff72f5cf0affbceecb08b9f1e",
+      "bytes": 3520
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/verification.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/verification.json",
+      "sha256": "fb1922cd22fae42b8992b498f2c5995eed493af40e664adfd9e5aa6da7063c48",
+      "bytes": 3055
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/preservation_before.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/preservation_before.json",
+      "sha256": "98ce2d93b12c2179c463143b75785a9c4f7d5252cc0423f74a864f93a2bb8193",
+      "bytes": 27022
+    },
+    {
+      "from": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/concurrent_changes.json",
+      "to": "docs/reports/evidence/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/concurrent_changes.json",
+      "sha256": "39d24eb42ff3d5c3187c779c5497396a51d06b38499caccc581dbc5d791dc8d2",
+      "bytes": 4626
+    },
+    {
+      "from": "data/raw/probes/20260912T063021795259Z_99d695f0/system/executed_notebook.ipynb",
+      "to": "data_code/old_code/probe_runs/20260912T063021795259Z_99d695f0/executed_notebook.ipynb",
+      "sha256": "26fc754cf16b809a340389d67bb9aa2b17e33298876d2dc29a2a11b60d2e2cd7",
+      "bytes": 94015
+    },
+    {
+      "from": "model_code/README.md",
+      "to": "docs/old_docs/model-results-and-strategies.md",
+      "sha256": "8b022a6bea01a7f53fd5cede8f6867359eedd8b73471a033877fa6a9dc9e81ba",
+      "bytes": 16411
+    }
+  ],
+  "legacy_inventory": [
+    {
+      "original_path": "data/Coffee_Price_Weather.csv",
+      "current_path": "data/old_data/Coffee_Price_Weather.csv",
+      "initial_sha256": "c732a839ed067c7e65f3bc6397bcb3e06b92d93a46b99d9de4742d657c9b092c",
+      "current_sha256": "c732a839ed067c7e65f3bc6397bcb3e06b92d93a46b99d9de4742d657c9b092c",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/coffee_oil_exchange_daily.csv",
+      "current_path": "data/old_data/coffee_oil_exchange_daily.csv",
+      "initial_sha256": "86b1c9a181ce898c99326db28376f28110490e611b45de27ec90dfdf96eaf518",
+      "current_sha256": "86b1c9a181ce898c99326db28376f28110490e611b45de27ec90dfdf96eaf518",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/weather.csv",
+      "current_path": "data/old_data/weather.csv",
+      "initial_sha256": "4fba60d2ef044d64b31dbf4f63c7c4e149e9d39cdb56914f295c15a4af082e70",
+      "current_sha256": "4fba60d2ef044d64b31dbf4f63c7c4e149e9d39cdb56914f295c15a4af082e70",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/거시경제및커피가격통합데이터.csv",
+      "current_path": "data/old_data/거시경제및커피가격통합데이터.csv",
+      "initial_sha256": "3cde55ad2eb376fbce12529708d5b9628ea3ea0345c0aa9dcc4a470e6b185f89",
+      "current_sha256": "3cde55ad2eb376fbce12529708d5b9628ea3ea0345c0aa9dcc4a470e6b185f89",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/기후데이터피쳐선택.csv",
+      "current_path": "data/old_data/기후데이터피쳐선택.csv",
+      "initial_sha256": "8835e5d58fd1cae78e94bc6b7be493d069bf063628a1c390ad95ad53d3bd0068",
+      "current_sha256": "8835e5d58fd1cae78e94bc6b7be493d069bf063628a1c390ad95ad53d3bd0068",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/기후평균커피가격통합데이터.csv",
+      "current_path": "data/old_data/기후평균커피가격통합데이터.csv",
+      "initial_sha256": "afb6c81175bdf86eea162505de941a58d47c53a272a84668ee31d786272fa3b1",
+      "current_sha256": "afb6c81175bdf86eea162505de941a58d47c53a272a84668ee31d786272fa3b1",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/비수확기평균커피가격통합데이터.csv",
+      "current_path": "data/old_data/비수확기평균커피가격통합데이터.csv",
+      "initial_sha256": "c53975d86a60f61b9117276b2ec5590e13acd6b4ae2734334b244eccae934af7",
+      "current_sha256": "c53975d86a60f61b9117276b2ec5590e13acd6b4ae2734334b244eccae934af7",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data/커피가격데이터통합.csv",
+      "current_path": "data/old_data/커피가격데이터통합.csv",
+      "initial_sha256": "c6b167cbb1c0f358912582504fba03019b92a50e34dc2036ec6951208da0c51a",
+      "current_sha256": "c6b167cbb1c0f358912582504fba03019b92a50e34dc2036ec6951208da0c51a",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data_code/기후데이터_FeatureSelection.ipynb",
+      "current_path": "data_code/old_code/data_code/기후데이터_FeatureSelection.ipynb",
+      "initial_sha256": "8dec537c321270686e59b406c422427bb2f341a2cfa4daacbadca533d77849d1",
+      "current_sha256": "8dec537c321270686e59b406c422427bb2f341a2cfa4daacbadca533d77849d1",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "data_code/기후데이터_수확기_평균값_매핑.ipynb",
+      "current_path": "data_code/old_code/data_code/기후데이터_수확기_평균값_매핑.ipynb",
+      "initial_sha256": "917dfc681128ae12216165aa08ddc9da4f1e3f4b33aeff73d5b7d1c6b4ca871b",
+      "current_sha256": "917dfc681128ae12216165aa08ddc9da4f1e3f4b33aeff73d5b7d1c6b4ca871b",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "docs/old_docs/ARIMA,VAR,LSTM 베이스라인 모델.pdf",
+      "current_path": "docs/old_docs/ARIMA,VAR,LSTM 베이스라인 모델.pdf",
+      "initial_sha256": "3e30d8a2894ad8e6b4363205228a4b6f94c90ab3344ff5bfc42d2793c0c693fa",
+      "current_sha256": "3e30d8a2894ad8e6b4363205228a4b6f94c90ab3344ff5bfc42d2793c0c693fa",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "docs/old_docs/LSTM - Attention 추가 간의 비교.pdf",
+      "current_path": "docs/old_docs/LSTM - Attention 추가 간의 비교.pdf",
+      "initial_sha256": "58795c66cbfffc5e12048a2e2c79aa9b44596e65a1224eab4da9abf446434dc2",
+      "current_sha256": "58795c66cbfffc5e12048a2e2c79aa9b44596e65a1224eab4da9abf446434dc2",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "docs/old_docs/README.md",
+      "current_path": "docs/old_docs/README.md",
+      "initial_sha256": "e05386835ad2d2b9744da29fded4e1fdcc88359a97532c2f9098102691a82c5b",
+      "current_sha256": "e05386835ad2d2b9744da29fded4e1fdcc88359a97532c2f9098102691a82c5b",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "docs/old_docs/거시경제데이터에 기후데이터 추가_초기버전.pdf",
+      "current_path": "docs/old_docs/거시경제데이터에 기후데이터 추가_초기버전.pdf",
+      "initial_sha256": "e20374abb35e4899b4e8fa2be11c38bf9d82eee4b0516c92fc1a621e9d83eaff",
+      "current_sha256": "e20374abb35e4899b4e8fa2be11c38bf9d82eee4b0516c92fc1a621e9d83eaff",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "model_code/Attention_LSTM_모델학습_예측결과활용.ipynb",
+      "current_path": "data_code/old_code/model_code/Attention_LSTM_모델학습_예측결과활용.ipynb",
+      "initial_sha256": "e4c37ce2395afe0bbee93507d05eefb94562cd445de345ad5bca7430db07dc60",
+      "current_sha256": "98c0786acbbd6b42dc1c90abc024c91a410b6c29a666e25e2b24671b06822daa",
+      "matches_initial_content": false,
+      "note": "Earlier source/output edits preserved; not modified in directory cleanup"
+    },
+    {
+      "original_path": "model_code/MultiStepLSTM_거시경제_기후사용.ipynb",
+      "current_path": "data_code/old_code/model_code/MultiStepLSTM_거시경제_기후사용.ipynb",
+      "initial_sha256": "a118c46a1f589c682b1499dd2f63481b97abc3f7d64b436d5116990512a3ee9e",
+      "current_sha256": "a118c46a1f589c682b1499dd2f63481b97abc3f7d64b436d5116990512a3ee9e",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    },
+    {
+      "original_path": "model_code/README.md",
+      "current_path": "docs/old_docs/model-results-and-strategies.md",
+      "initial_sha256": "8b022a6bea01a7f53fd5cede8f6867359eedd8b73471a033877fa6a9dc9e81ba",
+      "current_sha256": "8b022a6bea01a7f53fd5cede8f6867359eedd8b73471a033877fa6a9dc9e81ba",
+      "matches_initial_content": true,
+      "note": "Content matches initial inventory"
+    }
+  ],
+  "historical_manifests": [
+    {
+      "manifest": "data/raw/probes/20260912T063021795259Z_99d695f0/system/manifest.json",
+      "artifacts_verified": 65,
+      "status": "passed_using_relocation_map"
+    },
+    {
+      "manifest": "data/raw/probes/20260912T083059334258Z_46f169ca/system/manifest.json",
+      "artifacts_verified": 64,
+      "status": "passed_using_relocation_map"
+    },
+    {
+      "manifest": "data/raw/probes/20260912T084033463809Z_yahoo_diagnostic_b09941/manifest.json",
+      "artifacts_verified": 8,
+      "status": "passed_using_relocation_map"
+    },
+    {
+      "manifest": "data/raw/probes/20260912T091208763138Z_yahoo_ohlc_memo_b242f9/manifest.json",
+      "artifacts_verified": 43,
+      "status": "passed_using_relocation_map"
+    }
+  ],
+  "historical_manifest_policy": "Original JSON and referenced hashes unchanged; map original artifact paths through moves to find current paths",
+  "audit_command": ".venv/bin/python tools/audit_baseline.py",
+  "audit_result": {
+    "exit_code": 0,
+    "legacy_files": 17,
+    "csv_files": 8,
+    "notebooks": 4,
+    "csv_rows": 52936,
+    "duplicate_rows": 0,
+    "duplicate_inspection_keys": 0
+  },
+  "validation_status": "passed",
+  "verified_at": "2026-09-12T12:36:32.679217+00:00",
+  "validation": {
+    "before_file_count": 225,
+    "preserved_content_count_including_moves": 218,
+    "modified_existing_files": [
+      "docs/baseline-audit.md",
+      "docs/reports/core4-probe-validation-2026-09-12.md",
+      "docs/reports/yahoo-ohlc-technical-memo.md",
+      "tools/audit_baseline.py",
+      "AGENTS.md",
+      "Context.md",
+      "docs/STATUS.md"
+    ],
+    "moved_files_with_identical_content": 18,
+    "data_files": 175,
+    "data_suffixes": [
+      ".csv",
+      ".json",
+      ".jsonl",
+      ".pkl",
+      ".txt",
+      ".zip"
+    ],
+    "data_python_files": 0,
+    "data_notebook_files": 0,
+    "active_notebooks": [
+      "data_code/01_small_batch_probe.ipynb"
+    ],
+    "active_notebook_hash_unchanged": true,
+    "notebook_schema_and_code_ast": "passed; not executed",
+    "model_directory_files": 0,
+    "local_markdown_links_checked": 51,
+    "local_missing_links": [],
+    "private_secret_matches": 0,
+    "git_diff_check_exit_code": 0,
+    "historical_manifest_references_verified": 180
+  }
+}

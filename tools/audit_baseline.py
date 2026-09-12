@@ -70,9 +70,18 @@ def csv_inventory(path):
 
 
 def main():
+    # Legacy inputs only: current Probe tables have a different schema, and saved
+    # Probe executions are evidence rather than original modeling notebooks.
+    folders = (
+        "data/old_data",
+        "data_code/old_code/data_code",
+        "data_code/old_code/model_code",
+        "docs/old_docs",
+    )
     paths = sorted(
-        path for folder in ("data", "data_code", "model_code", "old_code", "docs/old_docs")
-        for path in (ROOT / folder).rglob("*") if path.is_file()
+        path for folder in folders
+        for path in (ROOT / folder).rglob("*")
+        if path.is_file() and path.suffix in {".csv", ".ipynb", ".md", ".pdf"}
     )
     output = {
         "baseline_commit": subprocess.check_output(

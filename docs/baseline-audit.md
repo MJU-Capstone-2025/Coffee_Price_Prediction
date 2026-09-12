@@ -6,7 +6,7 @@
 - 재현: `.venv/bin/python tools/audit_baseline.py`. 상세 증거: [baseline-inventory.json](reports/baseline-inventory.json).
 - 셀 번호는 markdown을 포함하는 **1-based notebook 위치**이며 execution_count가 아니다.
 
-2026-09-12 후속 사용자 지시로 notebook 4개를 `old_code/` 아래 같은 하위 경로로 이동했다. 아래 표와 최초 inventory의 notebook 경로는 **이동 전 조사 시점 경로**다. 현재 파일은 해당 경로 앞에 `old_code/`를 붙이면 찾을 수 있다. [이동 매핑·SHA-256](reports/legacy-notebook-move.json)에 내용 불변 증거를 보존한다. 감사 스크립트는 새 보관 경로도 포함하며 최초 snapshot을 덮어쓰지 않는다.
+2026-09-12 후속 사용자 지시로 notebook 4개를 별도 보관했다. 아래 표와 최초 inventory의 경로는 **최초 조사 시점 경로**다. 현재 데이터는 `data/old_data/`, notebook은 `data_code/old_code/{data_code,model_code}/`, 과거 문서는 `docs/old_docs/`에 있다. 최초 [이동 매핑·SHA-256](reports/legacy-notebook-move.json)은 당시 기록으로 보존한다. 최신 [배치·보존 검사](reports/directory-reorganization-2026-09-12.json)에서 과거 17개 파일의 현재 위치를 확인했으며, Attention notebook 하나는 이전 작업에서 이미 수정되어 최초 SHA-256과 다르다. 이번 배치 정리로 그 내용을 바꾸거나 원본으로 되돌리지 않았다. 감사 스크립트는 과거 자료 폴더만 읽고 현재 Probe CSV를 레거시 Date 스키마로 처리하지 않는다.
 
 ## 문서·구현·Git 대조
 
