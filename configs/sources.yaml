@@ -10,7 +10,7 @@ prediction:
   horizon: 5
   horizon_unit: trading_sessions
   cutoff_utc: "23:00:00"
-  initial_features: trailing_close_only
+  baseline_features: [close_momentum, close_volatility, brl, fred, weather_30d, cot_net_ratio]
   # 거래일 누락과 학습/평가 경계를 확인한 뒤 라벨을 만든다.
 
 yahoo:
