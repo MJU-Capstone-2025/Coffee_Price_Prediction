@@ -1,0 +1,83 @@
+[
+  {
+    "id": "yahoo_providers",
+    "url": "https://help.yahoo.com/kb/SLN2310.html",
+    "title": "Exchanges and data providers on Yahoo Finance",
+    "access_method": "web search returned official page text; direct web open failed",
+    "http_status": null,
+    "inspected_at": "2026-09-12T09:18:49.077194+00:00",
+    "excerpt": "ICE Futures US | .NYB | 30 min | ICE Data Services; Currency Rates | =X | Real-time | ICE Data Services",
+    "supports": "Current published coverage/provider table; not historical field semantics or fault ownership",
+    "does_not_establish": "KC daily Close settlement mapping; BRL bid/ask/mid or daily cutoff; 2024-2025 data vendor chain"
+  },
+  {
+    "id": "yahoo_adjusted_close",
+    "url": "https://help.yahoo.com/kb/SLN28256.html",
+    "title": "What is the adjusted close?",
+    "access_method": "web search returned official page text; direct web open returned 429",
+    "http_status": null,
+    "inspected_at": "2026-09-12T09:18:49.077194+00:00",
+    "excerpt": "Adjusted close is the closing price after adjustments",
+    "supports": "General split/dividend adjustment explanation",
+    "does_not_establish": "Futures daily settlement or rollover policy"
+  },
+  {
+    "id": "yahoo_brl_history",
+    "url": "https://finance.yahoo.com/quote/BRL%3DX/history/",
+    "title": "USD/BRL (BRL=X) historical data",
+    "access_method": "web search returned official page text; no historical prices extracted",
+    "http_status": null,
+    "inspected_at": "2026-09-12T09:18:49.077194+00:00",
+    "excerpt": "Close price adjusted for splits.",
+    "supports": "Generic displayed Close footnote and BRL pair label",
+    "does_not_establish": "Forex quote side or daily aggregation boundary"
+  },
+  {
+    "id": "ice_spec",
+    "url": "https://www.ice.com/products/15/Coffee-C-Futures",
+    "local_artifact": "public_responses/ice_coffee_spec.html",
+    "supports": "Contract size, cents/lb tick, contract months, notice/trading-day rules",
+    "does_not_establish": "Which historical delivery contract Yahoo used on a date"
+  },
+  {
+    "id": "ice_rule_4_34",
+    "url": "https://www.ice.com/publicdocs/rulebooks/futures_us/4_Trading.pdf",
+    "local_artifact": "public_responses/ice_trading_rules.pdf",
+    "location": "Rule 4.34(b)(i)-(v), printed page 4-31",
+    "supports": "Separate settlement calculation including quotes/differentials/discretion",
+    "does_not_establish": "Yahoo Close field definition or actual selected-case settlement match"
+  },
+  {
+    "id": "ice_settlement_window",
+    "url": "https://www.ice.com/publicdocs/futures_us/exchange_notices/ICE_Futures_US_KC_ArbBlocks20181207.pdf",
+    "local_artifact": "public_responses/ice_settlement_window_2018.pdf",
+    "supports": "Notice effective 2019-01-07 specifies 12:23-12:25 New York settlement window",
+    "does_not_establish": "Unchanged schedule on every 2024-2025 date; Yahoo field implementation"
+  },
+  {
+    "id": "ice_archive_access",
+    "url": "https://www.ice.com/report-center",
+    "local_artifact": "public_responses/ice_report_center.html",
+    "supports": "End-of-day reports and subscription CSV packages described",
+    "does_not_establish": "All historical data is paid or unavailable; no exhaustive archive search claimed"
+  },
+  {
+    "id": "ice_expiry",
+    "url": "https://www.ice.com/expiry-calendar",
+    "local_artifact": "public_responses/ice_expiry_calendar.html",
+    "supports": "Public filter UI exists",
+    "does_not_establish": "Past selected-case exact expiry dates; no populated historical calendar result obtained"
+  },
+  {
+    "id": "yfinance_history",
+    "url": "https://ranaroussi.github.io/yfinance/reference/yfinance.price_history.html",
+    "local_artifact": "public_responses/yfinance_history_docs.html",
+    "supports": "Exclusive end; adjustment options; generic 60-day intraday note"
+  },
+  {
+    "id": "yfinance_hourly",
+    "url": "https://ranaroussi.github.io/yfinance/advanced/price_repair.html",
+    "local_artifact": "public_responses/yfinance_repair_docs.html",
+    "supports": "1h data limit described as two years; used only to bound access attempt, repair not executed"
+  }
+]

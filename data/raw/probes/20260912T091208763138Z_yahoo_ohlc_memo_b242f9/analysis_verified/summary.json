@@ -1,0 +1,135 @@
+[
+  {
+    "symbol": "KC=F",
+    "response_rows": 506,
+    "response_volume_null": 2,
+    "outside_approved_period": 0,
+    "rows": 506,
+    "valid_ohlc": 504,
+    "missing_ohlc_rows": 2,
+    "duplicates": 0,
+    "observed_start": "2024-01-02",
+    "observed_end": "2025-12-31",
+    "anomalies": 73,
+    "high_below_low": 0,
+    "open_below": 0,
+    "open_above": 0,
+    "close_below": 37,
+    "close_above": 36,
+    "raw_volume_null": 2,
+    "raw_volume_zero": 31,
+    "library_volume_null": 0,
+    "library_volume_zero": 33,
+    "bad_volume_null": 0,
+    "bad_volume_zero": 0,
+    "bad_volume_min": 1.0,
+    "bad_volume_median": 18.0,
+    "bad_volume_max": 15678.0,
+    "other_valid_volume_median": 13070.0,
+    "bad_volume_le100": 67,
+    "bad_volume_le1000": 69,
+    "valid_volume_le100": 178,
+    "valid_volume_le100_without_violation": 111,
+    "max_close_abs_gap": 16.5,
+    "min_close_abs_gap": 0.100006103515625,
+    "valid_open_equals_close": 50,
+    "bad_open_equals_close": 0,
+    "close_equals_adj_close": true,
+    "timestamp_exchange_clock_counts": {
+      "00:00:00": 500,
+      "09:30:00": 6
+    },
+    "comparisons": {
+      "diagnostic_library_csv": {
+        "rows": 506,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_library_csv": {
+        "rows": 506,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_validation_csv": {
+        "rows": 506,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_library_pickle": {
+        "rows": 506,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      }
+    }
+  },
+  {
+    "symbol": "BRL=X",
+    "response_rows": 524,
+    "response_volume_null": 5,
+    "outside_approved_period": 1,
+    "rows": 523,
+    "valid_ohlc": 519,
+    "missing_ohlc_rows": 4,
+    "duplicates": 0,
+    "observed_start": "2024-01-01",
+    "observed_end": "2025-12-31",
+    "anomalies": 4,
+    "high_below_low": 0,
+    "open_below": 3,
+    "open_above": 0,
+    "close_below": 3,
+    "close_above": 1,
+    "raw_volume_null": 4,
+    "raw_volume_zero": 519,
+    "library_volume_null": 0,
+    "library_volume_zero": 523,
+    "bad_volume_null": 0,
+    "bad_volume_zero": 4,
+    "bad_volume_min": 0.0,
+    "bad_volume_median": 0.0,
+    "bad_volume_max": 0.0,
+    "other_valid_volume_median": 0.0,
+    "bad_volume_le100": 4,
+    "bad_volume_le1000": 4,
+    "valid_volume_le100": 519,
+    "valid_volume_le100_without_violation": 515,
+    "max_close_abs_gap": 0.0317997932434082,
+    "min_close_abs_gap": 0.0012998580932617188,
+    "valid_open_equals_close": 473,
+    "bad_open_equals_close": 3,
+    "close_equals_adj_close": true,
+    "timestamp_exchange_clock_counts": {
+      "00:00:00": 523
+    },
+    "comparisons": {
+      "diagnostic_library_csv": {
+        "rows": 523,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_library_csv": {
+        "rows": 523,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_validation_csv": {
+        "rows": 523,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      },
+      "probe_library_pickle": {
+        "rows": 523,
+        "price_equal": true,
+        "dates_equal": true,
+        "volume_equals_raw_after_null_to_zero": true
+      }
+    }
+  }
+]

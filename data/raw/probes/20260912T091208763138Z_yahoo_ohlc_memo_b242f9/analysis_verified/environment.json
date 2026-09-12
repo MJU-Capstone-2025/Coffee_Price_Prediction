@@ -1,0 +1,15 @@
+{
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "executable": "/Users/sj/MyDrive/MyWorkspace/Projects/Coffee_Price_Prediction/.venv/bin/python",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "packages": {
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "yfinance": "1.7.0",
+    "requests": "2.34.2",
+    "curl_cffi": "0.16.3"
+  },
+  "analyzed_at": "2026-09-12T09:15:17.199406+00:00",
+  "network_requests": 0
+}
