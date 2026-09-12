@@ -52,30 +52,45 @@ def test_parquet_duckdb_roundtrip(tmp_path):
     import pyarrow as pa
     import pyarrow.parquet as pq
 
+    # Explicit microseconds also type all-null columns without resolution inference.
     # Distinct times only test preservation, not a production availability rule.
+    timestamp_dtype = pd.DatetimeTZDtype(unit="us", tz="UTC")
     frame = pd.DataFrame({
         "code": pd.Series(["083731", "083731"], dtype="string"),
         "observation_date": [date(2020, 1, 1), date(2020, 1, 2)],
-        "published_at": pd.to_datetime([None, None], utc=True),
-        "ingested_at": pd.to_datetime(["2026-09-12T00:00:00Z"] * 2, utc=True),
-        "available_at": pd.to_datetime(["2020-01-03T00:00:00Z", None], utc=True),
+        "published_at": pd.Series([None, None], dtype=timestamp_dtype),
+        "ingested_at": pd.Series(
+            ["2026-09-12T00:00:00.123456Z"] * 2, dtype=timestamp_dtype,
+        ),
+        "available_at": pd.Series(
+            ["2020-01-03T00:00:00.654321Z", None], dtype=timestamp_dtype,
+        ),
         "value": pd.Series([1.25, None], dtype="Float64"),
     })
     path = tmp_path / "synthetic.parquet"
     table = pa.Table.from_pandas(frame, preserve_index=False)
-    pq.write_table(table, path)
-    assert pq.read_table(path).equals(table)
+    timestamp_columns = ("published_at", "ingested_at", "available_at")
+    for column in timestamp_columns:
+        assert table.schema.field(column).type == pa.timestamp("us", tz="UTC")
+    pq.write_table(table, path, coerce_timestamps="us", allow_truncated_timestamps=False)
+    restored_table = pq.read_table(path)
+    assert restored_table.equals(table)
+    for column in timestamp_columns:
+        assert restored_table.schema.field(column).type == pa.timestamp("us", tz="UTC")
     restored = pd.read_parquet(path)
     pd.testing.assert_frame_equal(restored, frame)
     np.testing.assert_allclose(restored["value"].dropna().to_numpy(dtype=float), [1.25])
     with duckdb.connect(":memory:") as connection:
         connection.execute("SET TimeZone = 'UTC'")
         rows = connection.execute(
-            "SELECT code, value, published_at, available_at FROM read_parquet(?) ORDER BY observation_date",
+            "SELECT code, value, published_at, ingested_at, available_at "
+            "FROM read_parquet(?) ORDER BY observation_date",
             [str(path)],
         ).fetchall()
-    assert rows[0] == ("083731", 1.25, None, datetime(2020, 1, 3, tzinfo=timezone.utc))
-    assert rows[1] == ("083731", None, None, None)
+    ingested_at = datetime(2026, 9, 12, microsecond=123456, tzinfo=timezone.utc)
+    available_at = datetime(2020, 1, 3, microsecond=654321, tzinfo=timezone.utc)
+    assert rows[0] == ("083731", 1.25, None, ingested_at, available_at)
+    assert rows[1] == ("083731", None, None, ingested_at, None)
 
 
 def test_yaml_zip_csv_and_xlsx_parsers():

@@ -1,6 +1,0 @@
-{
-  "expected_region_pairs": 15,
-  "variable_comparisons": 75,
-  "suspected_duplicate_pairs": [],
-  "interpretation": "exact complete series can suggest duplicate grid; correlation alone cannot identify grids"
-}
