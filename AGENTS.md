@@ -23,12 +23,18 @@
 
 ## 환경과 코드
 
-Apple Silicon Mac의 기존 `.venv`와 CPython 3.14를 사용하며 가상환경을 재생성하지 마세요.
+Apple Silicon Mac에서 uv로 관리하는 프로젝트 폴더 외부의 기존 가상환경 `$HOME/.virtualenvs/coffee-price-prediction`과 CPython 3.14를 사용합니다. 프로젝트 내부에 `.venv`를 만들거나 기존 가상환경을 재생성하지 마세요.
+
+`.env`의 `COFFEE_VENV`와 `UV_PROJECT_ENVIRONMENT`는 이 외부 경로를 가리킵니다. `.env`에서는 `python-dotenv`도 홈 경로를 확장하도록 `${HOME}` 표기를 사용합니다. 셸에서 실행할 때는 다음과 같이 설정합니다.
 
 ```sh
-source .venv/bin/activate
+export COFFEE_VENV="$HOME/.virtualenvs/coffee-price-prediction"
+export UV_PROJECT_ENVIRONMENT="$COFFEE_VENV"
+source "$COFFEE_VENV/bin/activate"
 python data_code/02_backfill_10y.py
 ```
+
+패키지는 `uv pip install --python "$COFFEE_VENV/bin/python" -r requirements.txt`처럼 대상 환경을 명시해 관리합니다.
 
 Python은 공백 4칸, 함수·변수는 `snake_case`를 사용합니다. 패키지는 설치·검증 후에만 `requirements.txt`에 추가하세요. `.env`의 키는 환경변수로 읽고 출력·URL 로그·예외에 노출하지 마세요.
 

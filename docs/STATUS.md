@@ -1,5 +1,11 @@
 # 작업 상태
 
+## 2026-09-13 — 외부 uv 가상환경 안내 정리
+
+- `AGENTS.md`·`Context.md`의 환경 안내를 프로젝트 외부의 `$HOME/.virtualenvs/coffee-price-prediction`으로 맞추고 활성화·uv 패키지 관리 명령을 명시했다.
+- `.env`의 `COFFEE_VENV`·`UV_PROJECT_ENVIRONMENT`는 `python-dotenv`에서도 경로가 확장되도록 `$HOME`을 `${HOME}`으로 바꿨다. 다른 설정은 유지했다.
+- 검증: uv 생성 정보·CPython 3.14.7, 문서의 셸 활성화 명령, 두 dotenv 경로가 같은 외부 환경을 가리키는지 확인했다. `git diff --check` 통과. 가상환경 재생성·패키지 변경은 없으며 `.env`는 Git 제외 상태다.
+
 ## 2026-09-13 — notebook 시각화 한국어 표시
 
 - `01`·`03` 첫 코드 셀에 운영체제별 폰트 분기를 추가했다. Windows/Mac/Linux는 각각 Malgun Gothic/AppleGothic/NanumGothic을 쓰며 Linux/Colab에는 설치 명령을 주석으로 안내한다. Seaborn에도 선택한 폰트를 전달한다. 변경 후 Mac의 새 커널에서 각각 11셀·19셀을 전체 실행했고 글꼴 경고는 없었다. Windows·Linux에서 직접 실행한 것은 아니다.
