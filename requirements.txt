@@ -20,10 +20,12 @@ executing==2.2.1
 fastjsonschema==2.22.2
 filelock==3.32.6
 fonttools==4.65.0
+formulaic==1.2.2
 fsspec==2026.7.0
 graphviz==0.21
 idna==3.19
 iniconfig==2.3.0
+interface-meta==2.0.1
 ipykernel==7.3.0
 ipython==9.17.1
 ipython_pygments_lexers==1.1.1
@@ -53,6 +55,7 @@ packaging==26.3
 pandas==3.0.5
 pandas_market_calendars==5.4.0
 parso==0.8.7
+patsy==1.0.3
 peewee==4.5.1
 pexpect==4.9.0
 pillow==12.3.0
@@ -85,6 +88,7 @@ setuptools==84.0.0
 six==1.17.0
 soupsieve==2.9.2
 stack-data==0.6.3
+statsmodels==0.15.0
 sympy==1.14.0
 threadpoolctl==3.6.0
 toolz==1.1.0
@@ -96,4 +100,5 @@ tzdata==2026.4
 urllib3==2.7.0
 wcwidth==0.8.3
 websockets==17.1
+wrapt==2.4.1
 yfinance==1.7.0
