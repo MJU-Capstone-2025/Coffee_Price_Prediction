@@ -58,8 +58,33 @@ PyCaret 4.0.0a8은 상태공간 지수평활·ARIMA 모델 생성에 쓴다. 자
 
 주 지표는 로그수익률 RMSE, 보조 지표는 MAE·방향 정확도다. 가격 환산 차트에는 정답 날짜를 쓴다. 0 예측은 보합이므로 Naive 방향 정확도를 50% 기준선으로 해석하지 않는다. 연도별·비중첩 시작점별 결과도 확인하되, 작은 개선을 통계적 우월성으로 부르지 않는다.
 
+## 03-2: 피처 조합과 Attention-LSTM 재검증
+
+03에서 본 후보를 `03_2_horizon_model_validation.ipynb`에서 비교한다. 기존 03의 상위 모델만 추린 실험은 아니다. Train 2015~2021, Validation 2022~2023, Test 2024~2025의 분할은 유지한다. 이미 본 Test를 참고해 후보를 정했으므로 새 독립 검증으로 해석하지 않는다.
+
+| 지평 | 피처 그룹 | 그룹별 모델 | 가격 단변량 모델 |
+|---|---|---|---|
+| 5·20일 | 가격+거시 / 전체 | CatBoost·LightGBM·Attention-LSTM | ARIMA·지수평활 |
+| 60일 | 가격+거시 / 가격+기후 / 전체 | CatBoost·LightGBM·DLinear·LSTM·Attention-LSTM | — |
+
+31개 후보와 지평별 Naive 3개를 비교한다. 가격+거시는 7개, 가격+기후는 24개, 전체는 27개다. 가격만 쓰는 ARIMA·지수평활을 피처 그룹마다 중복 계산하지 않는다.
+
+신경망 입력은 모두 `(사례 수, 60거래일, 피처 수)`다. 트리는 현재 행의 과거 집계 피처를 사용한다. 전체 피처의 60일 창이 유효한 날짜를 모든 모델에 공통 적용한다. 버퍼 가격 누락 때문에 첫 학습 사례는 2015-01-13이 되며, 이를 대치하지 않는다. 03과 달리 입력 창과 LSTM 용량도 바뀌므로 두 노트북의 지표 차이를 attention 효과로 설명하지 않는다.
+
+일반 LSTM과 Attention-LSTM은 은닉 64·2층·dropout 0.1·출력층 64→64→32→1로 맞춘다. Attention-LSTM은 학부 코드의 Entmax와 gate를 유지해 전체 시점의 문맥과 마지막 은닉 상태를 섞는다. 정적 피처 분기를 없애고 지평별 로그수익률 하나를 출력한다. Attention 가중치는 시간 위치에 대한 참고값이며 변수 중요도나 인과관계가 아니다.
+
+신경망은 MSE·AdamW·학습률 0.001·weight decay 0.01·batch 64·gradient clipping 1을 사용한다. 50/100 epoch를 같은 학습 과정에서 평가한다. 트리 모델은 03과 같은 설정에서 150/300개를 비교한다. CPU·seed 42로 실행하고 조기 종료와 Test 기반 학습률 조정은 하지 않는다.
+
+각 모델·그룹의 설정과 지평별 후보는 Validation RMSE로 선택한다. 정확히 동률이면 Naive, 적은 피처, 작은 설정 순이다. Test 전 2015~2023년으로 재학습하며 전처리 통계만 다시 계산한다. Test에서 순위가 달라져도 선택을 바꾸지 않는다. 그룹 비교는 조합별 설정 선택까지 포함한 결과이며 피처만의 순수 효과로 단정하지 않는다.
+
+전체와 부분 그룹, 60일의 일반 LSTM과 Attention-LSTM을 각각 비교한다. 이번 서빙 검토 후보는 60일 가격+거시 DLinear(50 epoch)다. 5·20일에서 선택된 지수평활은 가격 유지와 사실상 같았다. 연도별·비중첩 결과도 함께 보고 실제 배포 모델을 결정하며, 상세 결과는 [STATUS](STATUS.md)에 기록한다.
+
+03-2 하단에는 별도의 앙상블 실험을 둔다. Validation 방향 정확도가 50% 이상인 후보 중 로그수익률 RMSE가 낮은 두 개를 선택하고 예측 수익률을 50:50으로 평균한다. 후보는 모델과 피처 그룹의 조합이며, 같은 아키텍처도 허용한다. 기존에 고른 트리 수·epoch를 유지하고 Test에서 구성원이나 가중치를 변경하지 않는다. 조건에 맞는 후보가 두 개 미만이면 선택을 중단한다.
+
+50%는 후보 필터이며 통계적 우월성의 증명이 아니다. 항상 상승·항상 하락 방향 기준과 가격 단위 MAE·RMSE도 함께 표시한다. 모든 가격 선은 정답 날짜에 놓는다. 기존 단독 모델 셀·출력·선택은 보존하며, 앙상블 결과로 자동 교체하지 않는다. 가중치 탐색과 부호/크기 결합·스위칭은 이번 범위에서 제외한다.
+
 ## 실행
 
-외부 uv Python 3.12 환경에서 `python data_code/02_backfill_10y.py`를 실행한 뒤 03을 Run All 한다. 기본 수집 기간은 `configs/sources.yaml`을 읽는다. 04는 이전 실험으로 보존하고 이번 실행에는 포함하지 않는다. 실행 결과와 다음 작업은 [STATUS](STATUS.md)에 기록한다.
+외부 uv Python 3.12 환경에서 `python data_code/02_backfill_10y.py`를 실행한 뒤 03을 Run All 한다. 기본 수집 기간은 `configs/sources.yaml`을 읽는다. 03-2는 저장된 Parquet로 독립 실행하며 03의 실행 상태가 필요 없다. 04는 이전 실험으로 보존한다. 실행 결과와 다음 작업은 [STATUS](STATUS.md)에 기록한다.
 
 참고: [ALFRED 최초 공개값](https://fred.stlouisfed.org/docs/api/fred/series_observations.html#output_type), [Fed 달러지수 개편](https://www.federalreserve.gov/econres/notes/feds-notes/revisions-to-the-federal-reserve-dollar-indexes-20190115.html), [NASA 수정 안내](https://power.larc.nasa.gov/docs/tutorials/), [Farmdoc 가뭄·서리 분석](https://farmdocdaily.illinois.edu/2023/12/the-weather-risk-premium-in-coffee-futures-prices.html), [DLinear 원 구현](https://github.com/cure-lab/LTSF-Linear).
