@@ -23,7 +23,7 @@
 
 ## 환경과 코드
 
-Apple Silicon Mac에서 uv로 관리하는 프로젝트 폴더 외부의 기존 가상환경 `$HOME/.virtualenvs/coffee-price-prediction`과 CPython 3.14를 사용합니다. 프로젝트 내부에 `.venv`를 만들거나 기존 가상환경을 재생성하지 마세요.
+Apple Silicon Mac에서 uv로 관리하는 프로젝트 폴더 외부의 기존 가상환경 `$HOME/.virtualenvs/coffee-price-prediction`과 CPython 3.12를 사용합니다. 프로젝트 내부에 `.venv`를 만들지 마세요. PyCaret 4.0.0a8과 검증한 의존성은 `requirements.txt`를 따릅니다.
 
 `.env`의 `COFFEE_VENV`와 `UV_PROJECT_ENVIRONMENT`는 이 외부 경로를 가리킵니다. `.env`에서는 `python-dotenv`도 홈 경로를 확장하도록 `${HOME}` 표기를 사용합니다. 셸에서 실행할 때는 다음과 같이 설정합니다.
 

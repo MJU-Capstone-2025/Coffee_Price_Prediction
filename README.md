@@ -6,12 +6,21 @@
 
 ## 실행하기
 
-프로젝트 루트에서 기존 Python 3.14 환경을 사용합니다. FRED 수집에는 `.env`의 `FRED_API_KEY`가 필요합니다.
+Python 3.12를 사용합니다. 가상환경은 Google Drive가 동기화하는 프로젝트 폴더 밖에 둡니다. FRED 수집에는 `.env`의 `FRED_API_KEY`가 필요합니다.
 
-새로 clone한 환경에서만 `python3.14 -m venv .venv`로 환경을 만든 뒤, 활성화하고 `python -m pip install -r requirements.txt`로 패키지를 설치합니다. 이미 `.venv`가 있으면 그대로 사용합니다.
+처음 설치할 때만 가상환경을 만듭니다. PyCaret은 실행을 확인한 **4.0.0a8 알파 버전**으로 고정했습니다. 설치 extra는 `timeseries`입니다.
 
 ```sh
-source .venv/bin/activate
+uv venv --python 3.12 "$HOME/.virtualenvs/coffee-price-prediction"
+source "$HOME/.virtualenvs/coffee-price-prediction/bin/activate"
+uv pip install -r requirements.txt
+python -m ipykernel install --user --name coffee-price-prediction --display-name "Coffee Price Prediction (Python 3.12)"
+```
+
+이후에는 활성화 명령만 실행하면 됩니다. Notebook에서는 위 이름의 커널을 선택합니다. Apple Silicon에서 OpenMP 라이브러리가 없다는 오류가 나면 `brew install libomp`로 설치합니다.
+
+```sh
+source "$HOME/.virtualenvs/coffee-price-prediction/bin/activate"
 python data_code/02_backfill_10y.py
 ```
 
@@ -42,7 +51,7 @@ python data_code/02_backfill_10y.py --sources yahoo fred
 - [02_backfill_10y.py](data_code/02_backfill_10y.py): 수집 → 결측 표시 정리 → Parquet 저장.
 - [regions.yaml](configs/regions.yaml): 기상 데이터를 요청할 6개 좌표.
 - [01_small_batch_probe.ipynb](data_code/01_small_batch_probe.ipynb): 저장된 파일럿 자료의 검증 표와 가격 그래프.
-- [03_eda_and_baseline_models.ipynb](data_code/03_eda_and_baseline_models.ipynb): As-of Join, 피처 21개, 박스플롯·계절성·상관관계·회귀 분석과 기준 모델 비교. 패키지가 설치된 기존 Python 커널에서 위부터 실행합니다.
+- [03_eda_and_baseline_models.ipynb](data_code/03_eda_and_baseline_models.ipynb): As-of Join, 분포·계절성·상관관계·회귀 분석, 피처 선택·파생 피처 실험과 PyCaret 단변량 기준 모델 비교. Python 3.12 커널에서 위부터 실행합니다.
 - `data_code/old_code/`, `data/old_data/`, `docs/old_docs/`: 학부 프로젝트 자료.
 
 설계 선택은 [설계 노트](docs/architecture.md), Yahoo 가격 조사는 [트러블슈팅](docs/troubleshooting.md)에 정리했습니다.
@@ -58,6 +67,8 @@ python data_code/02_backfill_10y.py --sources yahoo fred
 | CatBoost | 0.043006 | 0.054674 | 47.19% |
 
 0은 보합으로 셉니다. Naive의 방향성 정확도는 실제 수익률이 0인 비율이며, 오차 비교를 위한 기준 모델입니다. CatBoost는 아직 Naive를 넘지 못했습니다. 중요도는 Huila의 30일 평균 기온, 20거래일 수익률, BRL 환율 순이었습니다.
+
+PyCaret 4에서는 외생변수 없이 다섯 단변량 모델을 비교했습니다. 2022~2023년 순차 검증에서는 가격 유지가 가장 낮은 RMSE를 보였고, 기존 테스트에서도 같은 Naive 기준으로 남았습니다. 피처 선택과 파생 피처 추가도 검증 오차를 줄이지 못해 전체 피처 구성을 유지했습니다. 실험 과정과 비교표는 `03` notebook 하단에 있습니다.
 
 개발 구간의 종가와 WTI·COT 순매수 비율 사이에는 상관이 있었지만, 5거래일 뒤 수익률과의 상관은 약했습니다. 21개 단일 피처 회귀의 검증 R²는 모두 음수였습니다. 기상 버퍼로 초반 결측은 해결했지만, 예측력이 좋아진 것은 아니었습니다.
 
