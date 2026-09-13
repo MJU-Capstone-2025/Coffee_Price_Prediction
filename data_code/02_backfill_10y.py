@@ -98,6 +98,36 @@ def fetch_weather(session, region, start, end):
     return frame.reset_index(drop=True)
 
 
+def fetch_initial_release(session, series_id, start, end):
+    """수정된 최신값 대신 ALFRED 최초 공개값과 공개 날짜를 받는다."""
+    key = os.getenv("FRED_API_KEY")
+    if not key:
+        raise ValueError(".env에 FRED_API_KEY를 설정하세요.")
+    parts = []
+    # 일별 금리는 공개본이 많아 한 번에 요청하면 API의 2,000개 제한을 넘는다.
+    for year in range(start.year, end.year + 1):
+        year_start, year_end = max(start, date(year, 1, 1)), min(end, date(year, 12, 31))
+        payload = get_response(
+            session, "https://api.stlouisfed.org/fred/series/observations",
+            api_key=key, series_id=series_id, file_type="json", output_type=4,
+            realtime_start=year_start.isoformat(),
+            realtime_end=min(end, date(year + 1, 6, 30)).isoformat(),
+            observation_start=year_start.isoformat(), observation_end=year_end.isoformat(),
+            sort_order="asc", limit=100000,
+        ).json()
+        part = pd.DataFrame(payload["observations"])
+        if part.empty or len(part) != int(payload["count"]):
+            raise ValueError(f"{series_id} {year}: 최초 공개값 응답이 비었거나 잘렸습니다.")
+        parts.append(part)
+    frame = pd.concat(parts, ignore_index=True)
+    frame = frame[["date", "realtime_start", "value"]].rename(
+        columns={"realtime_start": "release_date"})
+    frame["value"] = pd.to_numeric(frame.value.mask(frame.value.eq(".")))
+    frame["release_date"] = pd.to_datetime(frame.release_date)
+    frame["series_id"] = series_id
+    return frame
+
+
 def fetch_cot(session, start, end):
     parts = []
     for year in range(start.year, end.year + 1):
@@ -155,15 +185,28 @@ def save_table(frame, path, start, end):
 
 
 def main():
+    config = yaml.safe_load((ROOT / "configs" / "sources.yaml").read_text())
+    period = config["periods"]["backfill"]
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--start", type=date.fromisoformat, default=date(2016, 1, 1))
-    parser.add_argument("--end", type=date.fromisoformat, default=date(2025, 12, 31), help="마지막 날짜 포함")
+    parser.add_argument("--start", type=date.fromisoformat, default=date.fromisoformat(period["start"]))
+    parser.add_argument("--end", type=date.fromisoformat, default=date.fromisoformat(period["end"]), help="마지막 날짜 포함")
     parser.add_argument("--sources", nargs="+", choices=["yahoo", "fred", "nasa", "cftc"],
                         default=["yahoo", "fred", "nasa", "cftc"])
+    parser.add_argument("--regions", nargs="+", help="수집할 기상 region_id. 생략하면 6곳 모두 수집")
+    parser.add_argument("--weather-buffer-days", type=int, default=WEATHER_BUFFER_DAYS,
+                        help="기상 집계용 앞뒤 여유 일수 (기본 30)")
     parser.add_argument("--output", type=Path, help="기본값: data/processed/<시작일>_<종료일>")
     args = parser.parse_args()
     if args.start > args.end:
         parser.error("start는 end보다 늦을 수 없습니다.")
+    if args.weather_buffer_days < 0:
+        parser.error("weather-buffer-days는 0 이상이어야 합니다.")
+    regions = yaml.safe_load((ROOT / "configs" / "regions.yaml").read_text())["regions"]
+    if args.regions:
+        unknown = set(args.regions) - {region["region_id"] for region in regions}
+        if unknown:
+            parser.error("알 수 없는 기상 지점: " + ", ".join(sorted(unknown)))
+        regions = [region for region in regions if region["region_id"] in args.regions]
     output = args.output or ROOT / "data" / "processed" / f"{args.start}_{args.end}"
     load_dotenv(ROOT / ".env")
     # yfinance 캐시도 프로젝트 안에 둔다.
@@ -180,8 +223,9 @@ def main():
         if "fred" in args.sources:
             jobs.extend((series.lower(), fetch_fred, (session, series))
                         for series in ["DFF", "DTWEXBGS", "DCOILWTICO"])
+            jobs.extend((f"alfred_{series.lower()}", fetch_initial_release, (session, series))
+                        for series in config["fred"]["initial_release_series"])
         if "nasa" in args.sources:
-            regions = yaml.safe_load((ROOT / "configs" / "regions.yaml").read_text())["regions"]
             jobs.extend((f"weather_{r['region_id']}", fetch_weather, (session, r)) for r in regions)
         if "cftc" in args.sources:
             jobs.append(("cot", fetch_cot, (session,)))
@@ -190,9 +234,9 @@ def main():
             try:
                 start, end = args.start, args.end
                 if name.startswith("weather_"):
-                    # 30일 집계를 위해 원자료에 여유를 둔다. 모델 기간은 그대로다.
-                    start -= timedelta(days=WEATHER_BUFFER_DAYS)
-                    end += timedelta(days=WEATHER_BUFFER_DAYS)
+                    # 긴 집계도 실제 과거 관측값으로 채운다. 모델 기간은 그대로다.
+                    start -= timedelta(days=args.weather_buffer_days)
+                    end += timedelta(days=args.weather_buffer_days)
                 frame = fetch(*inputs, start, end)
                 save_table(frame, output / f"{name}.parquet", start, end)
             except Exception as exc:
