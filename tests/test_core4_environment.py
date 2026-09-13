@@ -39,7 +39,7 @@ def test_import_and_compatible_wheel(package, module):
 
 def test_approved_runtime():
     assert sys.implementation.name == "cpython"
-    assert sys.version_info[:2] == (3, 14)
+    assert sys.version_info[:2] == (3, 12)
     assert sys.prefix != sys.base_prefix
     assert platform.system() == "Darwin"
     assert platform.machine() == "arm64"
