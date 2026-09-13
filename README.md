@@ -1,96 +1,83 @@
-## 🟦 가격 예측 모델링 관련 진행상황
-### 📘 데이터
+# Coffee Price Prediction
 
-#### 1. 거시경제 데이터
-| 방식          | 처리       |
-| --------------- | --------------- | 
-| 스플라인 보간법 | 일간 데이터로 변경 |
-| 보조피처 추가 | 커피 가격의 변동성 반영 |
-- 추가 보조 피처 </br>
+학부 때 만든 커피 가격 예측 프로젝트를 다시 정리하고 있습니다. 데이터를 받는 과정부터 예측 결과를 차트로 보여주는 것까지 직접 연결하는 게 목표입니다.
 
-| 피처        | 생성 방법                    | 정보                    |
-| --------------- | ----------------------- | ----------------------- |
-| Abs_return  | 수익률의 절댓값 | 단기적 변화의 크기  |
-| Abs_return  | n일간 수익률의 표준편차 | 변동성의 정도 측정  |
-| Abs_return  | 5일전 가격 대비 현재 가격  | 상승세, 하락세 감지  |
-| Abs_return  | 볼린저 밴드 폭 | 시장이 과열인지 안정인지 측정  |
-| Abs_return  | z-score 계산 | 이상치, 비정상적인 변동 감지  |
+커피 선물·환율·거시지표·기상·투자자 포지션을 한 스크립트로 수집해 Parquet로 저장합니다. 2016~2025년 12개 테이블을 묶어 Naive·Ridge·CatBoost까지 비교했습니다. 다음 단계는 FastAPI와 대시보드입니다.
 
-#### 2 기후 데이터
-| 방식        | 처리                    |
-| --------------- | ----------------------- |
-| 가장 최근 수확기의 평균값으로 정적피처 | LightGBM을 통한 feature selection 수행 |
+## 실행하기
 
+Python 3.12를 사용합니다. 가상환경은 Google Drive가 동기화하는 프로젝트 폴더 밖에 둡니다. FRED 수집에는 `.env`의 `FRED_API_KEY`가 필요합니다.
 
-### 📘 모델별 결과
+처음 설치할 때만 가상환경을 만듭니다. PyCaret은 실행을 확인한 **4.0.0a8 알파 버전**으로 고정했습니다. 설치 extra는 `timeseries`입니다.
 
-#### ✅ VAR
+```sh
+uv venv --python 3.12 "$HOME/.virtualenvs/coffee-price-prediction"
+source "$HOME/.virtualenvs/coffee-price-prediction/bin/activate"
+uv pip install -r requirements.txt
+python -m ipykernel install --user --name coffee-price-prediction --display-name "Coffee Price Prediction (Python 3.12)"
+```
 
-- 예측/실제 비교 그래프
-<img src = "https://github.com/user-attachments/assets/3dc404e0-bf5d-4738-ae43-81dccbb2af3f" width=900>
+이후에는 활성화 명령만 실행하면 됩니다. Notebook에서는 위 이름의 커널을 선택합니다. Apple Silicon에서 OpenMP 라이브러리가 없다는 오류가 나면 `brew install libomp`로 설치합니다.
 
-- 평가지표
+```sh
+source "$HOME/.virtualenvs/coffee-price-prediction/bin/activate"
+python data_code/02_backfill_10y.py
+```
 
-| MAE | RMSE                    |
-| ----- | ----------------------- |
-| 8.6210  | 10.2275  |
+기본 기간은 **2016-01-01 ~ 2025-12-31**입니다. 짧게 확인하거나 특정 소스만 다시 받을 수도 있습니다.
 
-VAR은 선형모델이기 때문에 급격한 비선형 변동에 민감하게 반응하지 못하고 있다.
+```sh
+python data_code/02_backfill_10y.py --start 2025-01-01 --end 2025-01-31
+python data_code/02_backfill_10y.py --sources yahoo fred
+```
 
-#### ✅ LSTM
-입력시점을 기준으로 14일간의 예측을 하기 위해 MultiStepLSTM으로 사용하였다.
+결과는 `data/processed/2016-01-01_2025-12-31/`에 저장합니다. 다른 기간은 별도 폴더를 사용합니다. 같은 기간을 다시 실행하면 해당 테이블을 갱신하고, 실패한 테이블의 기존 파일은 유지합니다. 실패한 소스 이름은 터미널에 표시하며 하나라도 실패하면 종료 코드 1을 반환합니다.
 
-- 예측/실제 비교 그래프
-<img src = "https://github.com/user-attachments/assets/0ace463a-7b25-459a-8622-50a86e9144f5" width=900>
+기상 파일은 30일 집계에 쓸 버퍼를 앞뒤로 더 받습니다. 기본 기간에서는 `2015-12-02 ~ 2026-01-30`이 저장되며 모델 기간은 2016~2025년 그대로입니다. 기상만 수집하려면 `python data_code/02_backfill_10y.py --sources nasa`를 실행합니다.
 
-- 평가지표
+## 수집하는 데이터
 
-| MAE | RMSE                    |
-| ----- | ----------------------- |
-| 5.1393  | 6.6995  |
+| 데이터 | 출처 | 저장 파일 |
+|---|---|---|
+| 커피 선물·브라질 환율 일봉 | [yfinance](https://ranaroussi.github.io/yfinance/reference/api/yfinance.Ticker.history.html) | `coffee.parquet`, `brl.parquet` |
+| 실효금리·광의 달러지수·WTI 현물 | [FRED](https://fred.stlouisfed.org/docs/api/fred/series_observations.html) | `dff.parquet`, `dtwexbgs.parquet`, `dcoilwtico.parquet` |
+| 브라질·콜롬비아 6개 지점의 강수·기온·습도 | [NASA POWER](https://power.larc.nasa.gov/docs/services/api/temporal/daily/) | `weather_<지역>.parquet` |
+| 커피 선물 주별 투자자 포지션 | [CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm) | `cot.parquet` |
 
-급등/급락 부분에 대한 반영보단 완만한 예측을 하고 있다.
+날짜를 정렬하고 중복·빈 응답을 확인합니다. FRED의 `.`와 NASA 결측 표시는 NaN으로 바꿉니다. 가격은 임의로 채우지 않고, 각 소스의 원래 주기로 저장합니다. 가격 단위는 cents/lb, 환율은 BRL/USD이며 COT의 날짜는 발표일이 아닌 포지션 기준일입니다. 수집값은 현재 제공되는 과거 자료입니다.
 
-#### ✅ Attention - LSTM
-일반 Attention은 softmax를 써서 모든 timestamp에 weight를 부과하기 때문에 평균화가 된다. <br> Entmax는 softmax의 대안으로 출력 벡터 중 일부 값은 0이 되도록 만든든 함수이다. 이를 통해 전체의 입력 중 모든 시점에 weight를 부여하지 않고 중요하게 생각하는 시점에만 weight를 부여해 핵심 구간에만 집중하게 만들 수 있다.
-<br>
-Softmax: 모든 입력에 양의 weight를 부여 → dense (모두 반영됨) <br>
-Entmax: 중요하지 않은 입력에는 0을 출력함 → sparse (선택적 반영) <br>
-따라서 Entmax를 사용하면 평탄화된 예측을 줄이고 변동성있는 예측을 반영할 수 있게 된다. 
+## 코드 위치
 
-- 모델 설계 요약도
+- [02_backfill_10y.py](data_code/02_backfill_10y.py): 수집 → 결측 표시 정리 → Parquet 저장.
+- [regions.yaml](configs/regions.yaml): 기상 데이터를 요청할 6개 좌표.
+- [01_small_batch_probe.ipynb](data_code/01_small_batch_probe.ipynb): 저장된 파일럿 자료의 검증 표와 가격 그래프.
+- [03_eda_and_baseline_models.ipynb](data_code/03_eda_and_baseline_models.ipynb): As-of Join, 분포·계절성·상관관계·회귀 분석, 피처 선택·파생 피처 실험과 PyCaret 단변량 기준 모델 비교. Python 3.12 커널에서 위부터 실행합니다.
+- `data_code/old_code/`, `data/old_data/`, `docs/old_docs/`: 학부 프로젝트 자료.
 
-| 구성요소        | 방식                    | 기능 및 목적                    |
-| --------------- | ----------------------- | ----------------------- |
-| 시계열 인코더  | LSTM| 순차 정보, 추세 학습  |
-|Attention 메커니즘	|Entmax|	주요 시점 집중|
-|Context 조합 방식	|Context + last hidden|	유연한 정보 선택|
-|예측 헤드|	2-layer FC + ReLU|	다양한 패턴 예측|
-|Optimizer|	Adam	| 안정적 학습 |
+설계 선택은 [설계 노트](docs/architecture.md), Yahoo 가격 조사는 [트러블슈팅](docs/troubleshooting.md)에 정리했습니다.
 
-- 모델 구조 흐름 요약
-<img src = "https://github.com/user-attachments/assets/3796dbae-8a90-4f89-8a81-886fa90e4545" width=350>
+## 첫 모델 비교
 
-- 예측/실제 비교 그래프
-<img src="https://github.com/user-attachments/assets/cac4eb39-2562-4741-9d05-161e7df5edbd" width=900>
+5거래일 뒤 로그수익률을 예측했습니다. 2016~2021년 학습, 2022~2023년 검증으로 설정을 고른 뒤 2016~2023년으로 다시 학습했습니다. 아래는 2024~2025년 테스트 498건의 결과입니다.
 
-- 평가지표
+| 모델 | MAE | RMSE | 방향성 정확도 |
+|---|---:|---:|---:|
+| Naive (수익률 0) | 0.042810 | 0.054442 | 0.40% |
+| Ridge | 0.044329 | 0.057099 | 46.79% |
+| CatBoost | 0.043006 | 0.054674 | 47.19% |
 
-| MAE | RMSE |
-| --- | ---- |
-| 5.5794 | 6.8158 |
+0은 보합으로 셉니다. Naive의 방향성 정확도는 실제 수익률이 0인 비율이며, 오차 비교를 위한 기준 모델입니다. CatBoost는 아직 Naive를 넘지 못했습니다. 중요도는 Huila의 30일 평균 기온, 20거래일 수익률, BRL 환율 순이었습니다.
 
-성능 평가 지표로 보았을 때는 MultiStepLSTM을 사용하였을 때보다 성능이 좋지 
-못하다. 
-<br>
-하지만 예측 범위가 217 ~ 220 수준으로 평탄하였던 것에 비해 216 ~ 225로 폭이 
-넓어졌다. 즉, 실제 값 방향성 반영이 더 잘 되고 있다. 
-<br> 여전히 5월 26, 27일에 급등하는 부분에 덜 민감하게 따라간다. 모델이 스무딩 된 예측을 하는 경향이 여전히 있으므로 급등락 반영을 위한 손실함수의 수정을 통해 실제 추세를 더 잘 반영하도록 하는 수정이 필요하다.
+PyCaret 4에서는 외생변수 없이 다섯 단변량 모델을 비교했습니다. 2022~2023년 순차 검증에서는 가격 유지가 가장 낮은 RMSE를 보였고, 기존 테스트에서도 같은 Naive 기준으로 남았습니다. 피처 선택과 파생 피처 추가도 검증 오차를 줄이지 못해 전체 피처 구성을 유지했습니다. 실험 과정과 비교표는 `03` notebook 하단에 있습니다.
 
-## 🟦 고려해야할 사항
-1. 기후데이터 사용 방법
-- 현재는 가장 가까운 수확기의 평균값을 가지는 정적 피처로 사용하였다.
-- 대표값을 가지는 것을 평균으로 할 지 아니면 다른 방식을 사용할지에 대한 고려가 필요하다.
-2. Attention 모델
-- 급등락 부분이 여전히 스무딩 되는 경향이 있다. 
-- 변동성을 잘 학습할 수 있도록 입력 데이터 수정, 손실함수 수정, 예측값을 변동성으로 변경 등의 고려가 필요하다.
+개발 구간의 종가와 WTI·COT 순매수 비율 사이에는 상관이 있었지만, 5거래일 뒤 수익률과의 상관은 약했습니다. 21개 단일 피처 회귀의 검증 R²는 모두 음수였습니다. 기상 버퍼로 초반 결측은 해결했지만, 예측력이 좋아진 것은 아니었습니다.
+
+관측일에 바로 붙이지 않고 공개 지연을 가정해 병합했습니다. 과거 발표시각·수정 전 값은 파일에 없으며, 지연 가정과 COT 발표 예외는 notebook에 적었습니다. 가격 그래프도 매일 계산한 5거래일 앞 예측을 해당 날짜에 맞춰 그렸습니다.
+
+## Troubleshooting & 배운 점
+
+Yahoo 커피 데이터에서 Close가 당일 High–Low 범위를 벗어난 행을 발견했습니다. 원응답과 대조해보니 Yahoo 응답에도 같은 값이 있었습니다. 정산 방식이나 계약 연결 차이가 원인일 수 있어, 값을 억지로 고치기보다 가격 피처를 과거 Close로 만들었습니다. 로그수익률로 바꿔도 롤오버 영향이 없어지는 것은 아니라는 점도 함께 고려하고 있습니다.
+
+기상 피처의 초반 NaN은 원자료 누락이 아니라 30일 집계에 필요한 과거 관측값 부족이었습니다. 중앙값 대치를 없애고 기상 수집에 버퍼를 뒀습니다. [버퍼 전후 Jupyter 출력과 해결 과정](docs/troubleshooting.md#30일-기상-집계에서-생긴-초반-nan)을 함께 남겼습니다.
+
+파일럿 원응답은 `data/raw/pilot_probe/`에 소스별로 한 벌만 보관합니다. `.env`와 수집 데이터는 로컬 파일이며, 공개 저장소에서 새로 받으려면 수집 스크립트를 실행합니다.
