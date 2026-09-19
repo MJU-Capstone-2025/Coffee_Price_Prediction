@@ -69,3 +69,30 @@ Python은 공백 4칸, 함수·변수는 `snake_case`를 사용합니다. 패키
 main에 직접 커밋하지 않고 항상 feature 브랜치와 PR을 사용합니다. 명시적인 요청 없이는 기존 커밋을 amend하거나 history를 rewrite하거나 force push하지 마세요. `reset --hard` 같은 파괴적 명령은 사용자가 직접 실행합니다.
 
 PR에는 변경 목적, 실행법, 실제 검증 결과만 필요한 만큼 적습니다. 인증정보·개인 경로·가상환경·대량 수집 파일은 commit하지 마세요.
+
+
+## Multi-Agent Workflow
+
+복잡한 기능 구현은 다음 역할 분리를 따른다.
+
+- Coordinator: 전체 목표, 작업 분해, 최종 의사결정을 담당한다.
+- Architect: 구현 전 구조와 인터페이스를 설계하며 코드는 수정하지 않는다.
+- Explorer: 코드 위치, 의존성, 기존 구현을 조사하며 코드는 수정하지 않는다.
+- Implementer: 승인된 설계 범위에서 실제 코드를 구현한다.
+- Reviewer: 구현 후 독립적으로 diff와 테스트를 검토하며 코드는 수정하지 않는다.
+- Documenter: Reviewer 검증이 끝난 내용만 문서에 반영한다.
+
+기본 흐름:
+
+1. Coordinator가 작업 범위를 정의한다.
+2. Architect와 Explorer는 필요하면 병렬 실행한다.
+3. Coordinator가 결과를 종합하여 구현 범위를 확정한다.
+4. Implementer가 구현하고 테스트한다.
+5. Reviewer가 독립 검토한다.
+6. BLOCKER/HIGH 문제가 있으면 Implementer가 수정하고 다시 Review한다.
+7. Review 통과 후에만 Documenter가 문서를 갱신한다.
+8. Coordinator가 최종 diff와 검증 결과를 확인한다.
+
+여러 write agent가 동일 파일을 동시에 수정하지 않는다.
+병렬 작업은 파일 소유권과 interface contract가 명확히 분리된 경우에만 수행한다.
+commit과 push는 사용자가 직접 수행한다.
